@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Engrave - Homepage Concept v2</title>
+    <meta
+      name="description"
+      content="Concept homepage for Live Engrave, reframed around premium event personalisation, stronger product storytelling and a clearer conversion journey."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="brand-mark">
+          <img src="./assets/logo-stacked.png" alt="Live Engrave" />
+        </div>
+        <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="site-nav" id="site-nav">
+          <a href="#how-it-works">How it works</a>
+          <a href="#product-story">The experience</a>
+          <a href="#contact">Book a demo</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" data-parallax-group>
+          <div class="hero-backdrop" data-parallax="0.04">
+            <img src="./photos/hero-new.webp" alt="Premium Live Engrave event hero visual" />
+          </div>
+          <div class="hero-copy" data-parallax="0.08">
+            <h1>Instant <span class="text-highlight">personalisation</span><br />made simple.</h1>
+            <p class="hero-text">
+              Live Engrave is fast, interactive personalisation designed to keep your brand in their hands long after the event ends.
+            </p>
+            <div class="hero-actions">
+              <a class="button button--primary" href="#contact">Book a demo</a>
+              <a class="button button--secondary" href="#how-it-works">See the journey</a>
+            </div>
+            <ul class="hero-points">
+              <li>Fast enough for live event footfall</li>
+              <li>Designed to feel premium, not transactional</li>
+              <li>Built to create memorable products and measurable engagement</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="product-story" class="section product-story" data-parallax-group>
+          <div class="section-heading section-heading--narrow">
+            <p class="eyebrow">The experience</p>
+            <h2>Digital to <span class="text-highlight">physical</span>, in seconds.</h2>
+            <p>
+              The engraved product is what people keep. The software is what makes the experience <span class="text-emphasis">seamless</span>.
+            </p>
+          </div>
+
+          <div class="story-grid">
+            <article class="story-panel story-panel--feature" data-parallax="0.08">
+              <div class="story-panel__media">
+                <img src="./photos/product.webp" alt="Close-up engraved product beauty shot" />
+              </div>
+              <div class="story-panel__body">
+                <p class="story-kicker">What people remember</p>
+                <h3>A branded item that feels crafted, not handed out.</h3>
+                <p>
+                  The end result should feel <span class="text-emphasis">kept</span>, photographed and taken home  not dropped into a bag with the rest of the event collateral.
+                </p>
+              </div>
+            </article>
+            <article class="story-panel" data-parallax="0.14">
+              <div class="story-panel__media story-panel__media--device">
+                <img src="./photos/interaction.webp" alt="Premium event interaction detail" />
+              </div>
+              <div class="story-panel__body">
+                <p class="story-kicker">What makes it smooth</p>
+                <h3>The digital journey stays invisible.</h3>
+                <p>
+                  The user should feel only speed and clarity: choose, review, scan, collect. The system complexity stays behind the curtain.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="how-it-works" class="section split-section">
+          <div class="section-heading">
+            <p class="eyebrow">How it works</p>
+            <h2>Four steps. One <span class="text-highlight">seamless</span> handover.</h2>
+            <p>
+              Every touchpoint moves the guest cleanly from phone to finished product, without slowing the event down.
+            </p>
+          </div>
+
+          <div class="steps-carousel">
+            <button class="steps-carousel__arrow steps-carousel__arrow--prev" type="button" aria-label="Previous step">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m14.7 6.3-1.4-1.4L6.2 12l7.1 7.1 1.4-1.4L9 12l5.7-5.7Z" fill="currentColor"/></svg>
+            </button>
+            <div class="steps-carousel__viewport">
+              <div class="steps-grid" data-steps-track>
+                <article class="step-card">
+                  <span class="step-number">01</span>
+                  <img src="./assets/step-phone-form.png" alt="Phone form entry" />
+                  <h3>Personalise on your phone</h3>
+                  <p>Guests enter details, choose design options and review the final outcome before they commit.</p>
+                </article>
+                <article class="step-card">
+                  <span class="step-number">02</span>
+                  <img src="./assets/step-phone-qr.png" alt="QR code shown on phone" />
+                  <h3>Get a unique QR instantly</h3>
+                  <p>The QR carries the job cleanly into production with no awkward spelling checks or operator re-entry.</p>
+                </article>
+                <article class="step-card">
+                  <span class="step-number">03</span>
+                  <img src="./assets/step-laser.png" alt="Laser engraving process" />
+                  <h3>Scan and engrave on the spot</h3>
+                  <p>Operators scan, load and produce quickly  a process designed for <span class="text-emphasis">throughput</span> as well as theatre.</p>
+                </article>
+                <article class="step-card">
+                  <span class="step-number">04</span>
+                  <img src="./assets/step-finished-product.png" alt="Finished engraved product" />
+                  <h3>Hand over a keepsake</h3>
+                  <p>The result feels immediate, personal and far more valuable than a standard event giveaway.</p>
+                </article>
+              </div>
+            </div>
+            <button class="steps-carousel__arrow steps-carousel__arrow--next" type="button" aria-label="Next step">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9.3 17.7 1.4 1.4 7.1-7.1-7.1-7.1-1.4 1.4L15 12l-5.7 5.7Z" fill="currentColor"/></svg>
+            </button>
+            <div class="steps-carousel__progress" aria-label="Step progress">
+              <button class="steps-carousel__dot is-active" type="button" data-step-index="0" aria-label="Go to step 1">1</button>
+              <button class="steps-carousel__dot" type="button" data-step-index="1" aria-label="Go to step 2">2</button>
+              <button class="steps-carousel__dot" type="button" data-step-index="2" aria-label="Go to step 3">3</button>
+              <button class="steps-carousel__dot" type="button" data-step-index="3" aria-label="Go to step 4">4</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section products-section">
+          <div class="section-heading section-heading--inline">
+            <div>
+              <p class="eyebrow">Perfect for</p>
+              <h2>Built for <span class="text-highlight">high-attention</span> event environments.</h2>
+            </div>
+          </div>
+          <div class="tag-list">
+            <span>Exhibitions</span>
+            <span>Sports events</span>
+            <span>Product launches</span>
+            <span>Hospitality activations</span>
+            <span>Festivals</span>
+            <span>Conferences</span>
+            <span>Participation races</span>
+            <span>Experiential campaigns</span>
+          </div>
+          <div class="mockup-panel">
+            <img src="./photos/wideshot.webp" alt="Wide shot of a premium live engraving setup" />
+          </div>
+        </section>
+
+        <section class="section data-section">
+          <div class="data-band">
+            <div class="data-band__intro section-heading section-heading--narrow">
+              <p class="eyebrow">Commercial value</p>
+              <h2>Capture more than <span class="text-highlight">attention</span>.</h2>
+              <p>
+                Live Engrave can support opt-in data capture as part of the personalisation journey, turning each engraved product into a measurable campaign touchpoint.
+              </p>
+            </div>
+            <div class="data-band__points">
+              <article class="data-band__item">
+                <strong>Opt-in lead capture</strong>
+                <p>Collect the right customer details naturally within the experience.</p>
+              </article>
+              <article class="data-band__item">
+                <strong>Preference signals</strong>
+                <p>See which products, names, styles or options are resonating on the day.</p>
+              </article>
+              <article class="data-band__item">
+                <strong>Event ROI</strong>
+                <p>Link a memorable physical takeaway to meaningful engagement data.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="section contact-block">
+  <div class="section-heading section-heading--narrow">
+    <p class="eyebrow">Book a demo</p>
+    <h2>Tell us about the event. We will shape the right <span class="text-highlight">setup</span>.</h2>
+    <p>
+      We can talk through product choices, throughput, data capture and how the experience would fit your activation.
+    </p>
+  </div>
+
+  <div class="contact-section">
+
+    <form class="contact-form contact-form--wide">
+      <label>
+        <span>First name</span>
+        <input type="text" placeholder="Alex" />
+      </label>
+      <label>
+        <span>Last name</span>
+        <input type="text" placeholder="Morgan" />
+      </label>
+      <label>
+        <span>Company name</span>
+        <input type="text" placeholder="Brand name" />
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" placeholder="alex@brand.com" />
+      </label>
+      <label>
+        <span>Phone</span>
+        <input type="tel" placeholder="Optional" />
+      </label>
+      <label class="contact-form__full">
+        <span>What are you planning?</span>
+        <textarea rows="5" placeholder="Tell us about the event, audience, product type and timing."></textarea>
+      </label>
+      <div class="contact-form__actions">
+        <button class="button button--primary" type="button">Send enquiry</button>
+        <p class="contact-form__note">For early-stage planning, rough event details are enough.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+        <footer class="site-footer">
+          <div class="site-footer__links">
+            <a href="https://www.instagram.com/liveengrave" target="_blank" rel="noreferrer" aria-label="Instagram" class="site-footer__social">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.15a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@liveengrave" target="_blank" rel="noreferrer" aria-label="TikTok" class="site-footer__social">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M14 3c.27 2.18 1.55 4.03 3.88 4.59v2.61a6.6 6.6 0 0 1-3.88-1.26v5.71a5.65 5.65 0 1 1-5.64-5.65c.3 0 .59.03.87.08v2.74a2.94 2.94 0 0 0-.87-.13A2.95 2.95 0 1 0 11.3 14.6V3H14Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="/terms-and-conditions">Safety Policy</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+          </div>
+          <div class="site-footer__meta">
+            <span>&copy; 2026 LiveEngrave</span>
+          </div>
+        </footer>
+
+
+      </main>
+    </div>
+
+    <button class="scroll-top" type="button" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 5.5 5.5 12l1.4 1.4 4.1-4.1V19h2V9.3l4.1 4.1 1.4-1.4L12 5.5Z" fill="currentColor"/>
+      </svg>
+    </button>
+
+    <script>
+      (() => {
+        const toggle = document.querySelector('.site-nav-toggle');
+        const nav = document.querySelector('.site-nav');
+        if (!toggle || !nav) return;
+
+        const closeNav = () => {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.remove('is-open');
+        };
+
+        toggle.addEventListener('click', () => {
+          const open = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!open));
+          nav.classList.toggle('is-open', !open);
+        });
+
+        nav.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', closeNav);
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 820) closeNav();
+        });
+      })();
+    </script>
+    <script>
+      (() => {
+        const button = document.querySelector('.scroll-top');
+        if (!button) return;
+
+        const update = () => {
+          button.classList.toggle('is-visible', window.scrollY > 280);
+        };
+
+        button.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+      })();
+    </script>
+
+    <script src="./vendor/embla-carousel.umd.js"></script>
+    <script src="./steps-carousel.js"></script>
+    <script src="./effects.js"></script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
