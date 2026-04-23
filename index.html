@@ -241,21 +241,22 @@
   <div class="contact-section">
 
     <form class="contact-form contact-form--wide" data-contact-form>
+      <p class="contact-form__required-note">Fields marked <span aria-hidden="true">*</span> are required.</p>
       <label>
-        <span>First name</span>
-        <input type="text" name="firstName" placeholder="Alex" autocomplete="given-name" required />
+        <span>First name <span class="contact-form__required" aria-hidden="true">*</span></span>
+        <input type="text" name="firstName" placeholder="Alex" autocomplete="given-name" required aria-required="true" />
       </label>
       <label>
-        <span>Last name</span>
-        <input type="text" name="lastName" placeholder="Morgan" autocomplete="family-name" required />
+        <span>Last name <span class="contact-form__required" aria-hidden="true">*</span></span>
+        <input type="text" name="lastName" placeholder="Morgan" autocomplete="family-name" required aria-required="true" />
       </label>
       <label>
         <span>Company name</span>
         <input type="text" name="companyName" placeholder="Brand name" autocomplete="organization" />
       </label>
       <label>
-        <span>Email</span>
-        <input type="email" name="email" placeholder="alex@brand.com" autocomplete="email" required />
+        <span>Email <span class="contact-form__required" aria-hidden="true">*</span></span>
+        <input type="email" name="email" placeholder="alex@brand.com" autocomplete="email" required aria-required="true" />
       </label>
       <label>
         <span>Phone</span>
@@ -266,8 +267,8 @@
         <input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" />
       </label>
       <label class="contact-form__full">
-        <span>What are you planning?</span>
-        <textarea name="requirements" rows="5" placeholder="Tell us about the event, audience, product type and timing." required></textarea>
+        <span>What are you planning? <span class="contact-form__required" aria-hidden="true">*</span></span>
+        <textarea name="requirements" rows="5" placeholder="Tell us about the event, audience, product type and timing." required aria-required="true"></textarea>
       </label>
       <div class="contact-form__actions">
         <button class="button button--primary" type="submit" data-contact-submit>Send enquiry</button>
