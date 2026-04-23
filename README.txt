@@ -8,9 +8,12 @@ Run locally:
 Required environment variables for the contact form:
 - BREVO_API_KEY
 - CONTACT_TO
-- CONTACT_TO_NAME (optional)
 - CONTACT_FROM
-- CONTACT_FROM_NAME (optional)
 
-The contact form sends via Brevo transactional email API.
-On Railway, set those variables in the service before testing the form.
+Optional:
+- BREVO_ENQUIRY_LIST_ID
+- CONTACT_TO_NAME
+- CONTACT_FROM_NAME
+
+The contact form sends the enquiry by Brevo transactional email.
+If the user does not tick the CRM opt-out box, the contact is also created or updated in Brevo contacts and optionally added to the configured list.

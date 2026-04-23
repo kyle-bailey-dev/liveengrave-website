@@ -1579,3 +1579,28 @@ img {
   height: 1px;
   overflow: hidden;
 }
+
+
+.contact-form__checkbox-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 12px;
+  padding: 2px 0;
+}
+
+.contact-form__checkbox-row input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: #6f53ab;
+}
+
+.contact-form__checkbox-row span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-transform: none;
+}
