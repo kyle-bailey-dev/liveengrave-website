@@ -1,5 +1,4 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
 const path = require('path');
 
 const app = express();
@@ -10,23 +9,21 @@ app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(rootDir, { extensions: ['html'] }));
 
-const requiredEnv = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS', 'CONTACT_TO'];
+const requiredEnv = ['BREVO_API_KEY', 'CONTACT_TO', 'CONTACT_FROM'];
 
-const getTransporter = () => {
+const getBrevoConfig = () => {
   const missing = requiredEnv.filter((name) => !process.env[name]);
   if (missing.length) {
-    throw new Error(`Missing SMTP configuration: ${missing.join(', ')}`);
+    throw new Error(`Missing Brevo configuration: ${missing.join(', ')}`);
   }
 
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT),
-    secure: String(process.env.SMTP_SECURE || '').toLowerCase() === 'true' || Number(process.env.SMTP_PORT) === 465,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
+  return {
+    apiKey: process.env.BREVO_API_KEY,
+    to: process.env.CONTACT_TO,
+    toName: process.env.CONTACT_TO_NAME || 'Live Engrave',
+    from: process.env.CONTACT_FROM,
+    fromName: process.env.CONTACT_FROM_NAME || 'Live Engrave Website',
+  };
 };
 
 const escapeHtml = (value) => String(value || '')
@@ -55,37 +52,58 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-    const transporter = getTransporter();
-    const from = process.env.CONTACT_FROM || process.env.SMTP_USER;
-    const to = process.env.CONTACT_TO;
+    const config = getBrevoConfig();
     const subject = `Live Engrave enquiry from ${payload.firstName} ${payload.lastName}`;
-
-    await transporter.sendMail({
-      from,
-      to,
-      replyTo: payload.email,
-      subject,
-      text: [
-        `First name: ${payload.firstName}`,
-        `Last name: ${payload.lastName}`,
-        `Company name: ${payload.companyName || '-'}`,
-        `Email: ${payload.email}`,
-        `Phone: ${payload.phone || '-'}`,
-        '',
-        'Requirements:',
-        payload.requirements,
-      ].join('\n'),
-      html: `
-        <h2>New Live Engrave enquiry</h2>
-        <p><strong>First name:</strong> ${escapeHtml(payload.firstName)}</p>
-        <p><strong>Last name:</strong> ${escapeHtml(payload.lastName)}</p>
-        <p><strong>Company name:</strong> ${escapeHtml(payload.companyName || '-')}</p>
-        <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(payload.phone || '-')}</p>
-        <p><strong>Requirements:</strong></p>
-        <p>${escapeHtml(payload.requirements).replace(/\n/g, '<br />')}</p>
-      `,
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'api-key': config.apiKey,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        sender: {
+          name: config.fromName,
+          email: config.from,
+        },
+        to: [
+          {
+            email: config.to,
+            name: config.toName,
+          },
+        ],
+        replyTo: {
+          email: payload.email,
+          name: `${payload.firstName} ${payload.lastName}`.trim(),
+        },
+        subject,
+        textContent: [
+          `First name: ${payload.firstName}`,
+          `Last name: ${payload.lastName}`,
+          `Company name: ${payload.companyName || '-'}`,
+          `Email: ${payload.email}`,
+          `Phone: ${payload.phone || '-'}`,
+          '',
+          'Requirements:',
+          payload.requirements,
+        ].join('\n'),
+        htmlContent: `
+          <h2>New Live Engrave enquiry</h2>
+          <p><strong>First name:</strong> ${escapeHtml(payload.firstName)}</p>
+          <p><strong>Last name:</strong> ${escapeHtml(payload.lastName)}</p>
+          <p><strong>Company name:</strong> ${escapeHtml(payload.companyName || '-')}</p>
+          <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
+          <p><strong>Phone:</strong> ${escapeHtml(payload.phone || '-')}</p>
+          <p><strong>Requirements:</strong></p>
+          <p>${escapeHtml(payload.requirements).replace(/\n/g, '<br />')}</p>
+        `,
+      }),
     });
+
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`Brevo request failed: ${response.status} ${body}`);
+    }
 
     return res.json({ ok: true });
   } catch (error) {
