@@ -121,9 +121,89 @@
         border-radius: 34px;
         background: #fff;
         border: 1px solid rgba(255,255,255,0.06);
+        display: flex;
+        flex-direction: column;
       }
 
-      .phone-screen iframe {
+      .phone-browser {
+        flex: 0 0 auto;
+        background: linear-gradient(180deg, #f6f5fb 0%, #ece8f6 100%);
+        border-bottom: 1px solid rgba(21, 17, 31, 0.08);
+        padding: 12px 14px 10px;
+      }
+
+      .phone-status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        color: #4e4761;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .phone-status__icons {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .phone-status__dot,
+      .phone-status__bar {
+        display: inline-block;
+        background: #4e4761;
+        opacity: 0.86;
+      }
+
+      .phone-status__dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+      }
+
+      .phone-status__bar {
+        width: 13px;
+        height: 8px;
+        border-radius: 3px;
+      }
+
+      .phone-address {
+        display: grid;
+        grid-template-columns: 22px 1fr 18px;
+        align-items: center;
+        gap: 10px;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: inset 0 0 0 1px rgba(21, 17, 31, 0.08);
+        color: #3f3950;
+      }
+
+      .phone-address__nav,
+      .phone-address__menu {
+        font-size: 1rem;
+        line-height: 1;
+        text-align: center;
+        opacity: 0.8;
+      }
+
+      .phone-address__url {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .phone-iframe-wrap {
+        flex: 1 1 auto;
+        min-height: 0;
+        background: #fff;
+      }
+
+      .phone-iframe-wrap iframe {
         width: 100%;
         height: 100%;
         border: 0;
@@ -183,12 +263,29 @@
         <div class="phone-stage">
           <div class="phone-frame">
             <div class="phone-screen">
-              <iframe
-                src="https://app.liveengrave.com"
-                title="Live Engrave app demo"
-                loading="eager"
-                referrerpolicy="strict-origin-when-cross-origin"
-              ></iframe>
+              <div class="phone-browser">
+                <div class="phone-status">
+                  <span>9:41</span>
+                  <span class="phone-status__icons" aria-hidden="true">
+                    <span class="phone-status__dot"></span>
+                    <span class="phone-status__dot"></span>
+                    <span class="phone-status__bar"></span>
+                  </span>
+                </div>
+                <div class="phone-address" aria-hidden="true">
+                  <span class="phone-address__nav">&#8249;</span>
+                  <span class="phone-address__url">app.liveengrave.com</span>
+                  <span class="phone-address__menu">&#8942;</span>
+                </div>
+              </div>
+              <div class="phone-iframe-wrap">
+                <iframe
+                  src="https://app.liveengrave.com"
+                  title="Live Engrave app demo"
+                  loading="eager"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
