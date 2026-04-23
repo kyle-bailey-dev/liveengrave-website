@@ -16,4 +16,4 @@ Optional:
 - CONTACT_FROM_NAME
 
 The contact form sends the enquiry by Brevo transactional email.
-If the user does not tick the CRM opt-out box, the contact is also created or updated in Brevo contacts and optionally added to the configured list.
+If the user does not tick the marketing opt-out box, the contact is also created or updated in Brevo contacts and optionally added to the configured list.

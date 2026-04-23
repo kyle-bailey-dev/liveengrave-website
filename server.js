@@ -135,7 +135,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
           'Requirements:',
           payload.requirements,
           '',
-          `CRM retention opt-out: ${payload.doNotRetain ? 'Yes' : 'No'}`,
+          `Marketing and offers opt-out: ${payload.doNotRetain ? 'Yes' : 'No'}`,
         ].join('\n'),
         htmlContent: `
           <h2>New Live Engrave enquiry</h2>
@@ -147,7 +147,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
           <p><strong>Requirements:</strong></p>
           <p>${escapeHtml(payload.requirements).replace(/\n/g, '<br />')}</p>
           <hr style="margin: 24px 0; border: 0; border-top: 1px solid #d9d4ea;" />
-          <p style="font-size: 14px; color: #5d5672;"><strong>CRM retention opt-out:</strong> ${payload.doNotRetain ? 'Yes' : 'No'}</p>
+          <p style="font-size: 14px; color: #5d5672;"><strong>Marketing and offers opt-out:</strong> ${payload.doNotRetain ? 'Yes' : 'No'}</p>
         `,
       }),
     });
