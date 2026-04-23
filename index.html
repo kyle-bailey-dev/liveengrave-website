@@ -23,6 +23,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/logo-stacked.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#12111b" />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
 {
@@ -256,6 +260,10 @@
       <label>
         <span>Phone</span>
         <input type="tel" name="phone" placeholder="Optional" autocomplete="tel" />
+      </label>
+      <label class="contact-form__honeypot" aria-hidden="true">
+        <span>Company website</span>
+        <input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" />
       </label>
       <label class="contact-form__full">
         <span>What are you planning?</span>

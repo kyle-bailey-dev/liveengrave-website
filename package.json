@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/kyle-bailey-dev/liveengrave-website#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.4.0"
   },
   "engines": {
     "node": ">=20"

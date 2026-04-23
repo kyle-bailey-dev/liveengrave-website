@@ -1,4 +1,5 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
 const path = require('path');
 
 const app = express();
@@ -8,6 +9,14 @@ const rootDir = __dirname;
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(rootDir, { extensions: ['html'] }));
+
+const contactLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  limit: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { ok: false, error: 'Too many enquiries sent from this device. Please wait a few minutes and try again.' },
+});
 
 const requiredEnv = ['BREVO_API_KEY', 'CONTACT_TO', 'CONTACT_FROM'];
 
@@ -33,7 +42,7 @@ const escapeHtml = (value) => String(value || '')
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&#039;');
 
-app.post('/api/contact', async (req, res) => {
+app.post('/api/contact', contactLimiter, async (req, res) => {
   const payload = {
     firstName: String(req.body.firstName || '').trim(),
     lastName: String(req.body.lastName || '').trim(),
@@ -41,7 +50,12 @@ app.post('/api/contact', async (req, res) => {
     email: String(req.body.email || '').trim(),
     phone: String(req.body.phone || '').trim(),
     requirements: String(req.body.requirements || '').trim(),
+    companyWebsite: String(req.body.companyWebsite || '').trim(),
   };
+
+  if (payload.companyWebsite) {
+    return res.json({ ok: true });
+  }
 
   if (!payload.firstName || !payload.lastName || !payload.email || !payload.requirements) {
     return res.status(400).json({ ok: false, error: 'Please complete the required fields.' });
@@ -57,7 +71,7 @@ app.post('/api/contact', async (req, res) => {
     const response = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
-        'accept': 'application/json',
+        accept: 'application/json',
         'api-key': config.apiKey,
         'content-type': 'application/json',
       },
@@ -112,8 +126,11 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-app.use((_req, res) => {
-  res.sendFile(path.join(rootDir, 'index.html'));
+app.use((req, res) => {
+  if (req.accepts('html')) {
+    return res.status(404).sendFile(path.join(rootDir, '404.html'));
+  }
+  return res.status(404).json({ ok: false, error: 'Not found.' });
 });
 
 app.listen(port, () => {

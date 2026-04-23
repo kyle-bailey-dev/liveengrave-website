@@ -1,0 +1,15 @@
+{
+  "name": "Live Engrave",
+  "short_name": "Live Engrave",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#12111b",
+  "theme_color": "#12111b",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
