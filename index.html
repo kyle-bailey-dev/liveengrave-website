@@ -202,34 +202,34 @@
 
   <div class="contact-section">
 
-    <form class="contact-form contact-form--wide">
+    <form class="contact-form contact-form--wide" data-contact-form>
       <label>
         <span>First name</span>
-        <input type="text" placeholder="Alex" />
+        <input type="text" name="firstName" placeholder="Alex" autocomplete="given-name" required />
       </label>
       <label>
         <span>Last name</span>
-        <input type="text" placeholder="Morgan" />
+        <input type="text" name="lastName" placeholder="Morgan" autocomplete="family-name" required />
       </label>
       <label>
         <span>Company name</span>
-        <input type="text" placeholder="Brand name" />
+        <input type="text" name="companyName" placeholder="Brand name" autocomplete="organization" />
       </label>
       <label>
         <span>Email</span>
-        <input type="email" placeholder="alex@brand.com" />
+        <input type="email" name="email" placeholder="alex@brand.com" autocomplete="email" required />
       </label>
       <label>
         <span>Phone</span>
-        <input type="tel" placeholder="Optional" />
+        <input type="tel" name="phone" placeholder="Optional" autocomplete="tel" />
       </label>
       <label class="contact-form__full">
         <span>What are you planning?</span>
-        <textarea rows="5" placeholder="Tell us about the event, audience, product type and timing."></textarea>
+        <textarea name="requirements" rows="5" placeholder="Tell us about the event, audience, product type and timing." required></textarea>
       </label>
       <div class="contact-form__actions">
-        <button class="button button--primary" type="button">Send enquiry</button>
-        <p class="contact-form__note">For early-stage planning, rough event details are enough.</p>
+        <button class="button button--primary" type="submit" data-contact-submit>Send enquiry</button>
+        <p class="contact-form__note" data-contact-status aria-live="polite">For early-stage planning, rough event details are enough.</p>
       </div>
     </form>
   </div>
@@ -312,6 +312,7 @@
     <script src="./vendor/embla-carousel.umd.js"></script>
     <script src="./steps-carousel.js"></script>
     <script src="./effects.js"></script>
+    <script src="./contact-form.js"></script>
 
   </body>
 </html>

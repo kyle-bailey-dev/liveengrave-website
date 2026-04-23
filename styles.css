@@ -823,6 +823,23 @@ img {
   line-height: 1.5;
 }
 
+.contact-form__note[data-state="pending"] {
+  color: var(--text);
+}
+
+.contact-form__note[data-state="success"] {
+  color: #b9f2c1;
+}
+
+.contact-form__note[data-state="error"] {
+  color: #ffb0b0;
+}
+
+.contact-form [data-contact-submit]:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
 @media (max-width: 1100px) {
   .hero {
     min-height: 620px;

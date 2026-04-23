@@ -1,0 +1,29 @@
+{
+  "name": "liveengrave-website",
+  "version": "1.0.0",
+  "description": "Live Engrave marketing website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyle-bailey-dev/liveengrave-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kyle-bailey-dev/liveengrave-website/issues"
+  },
+  "homepage": "https://github.com/kyle-bailey-dev/liveengrave-website#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemailer": "^8.0.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
