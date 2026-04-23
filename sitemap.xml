@@ -8,11 +8,11 @@
   <url>
     <loc>https://liveengrave.com/privacy-policy</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://liveengrave.com/terms-and-conditions</loc>
+    <loc>https://liveengrave.com/safety-policy</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.5</priority>
   </url>
 </urlset>
