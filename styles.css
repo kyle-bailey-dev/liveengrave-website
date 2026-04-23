@@ -290,6 +290,27 @@ img {
   margin: 32px 0 24px;
 }
 
+.hero-demo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: -8px;
+  color: #d9cff4;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hero-demo-link::after {
+  content: '\2192';
+  transition: transform 180ms ease;
+}
+
+.hero-demo-link:hover::after,
+.hero-demo-link:focus-visible::after {
+  transform: translateX(3px);
+}
+
 .hero-copy > * {
   opacity: 0;
   transform: translate3d(0, 18px, 0);
@@ -306,6 +327,10 @@ img {
 
 .hero-copy .hero-actions {
   animation-delay: 300ms;
+}
+
+.hero-copy .hero-demo-link {
+  animation-delay: 360ms;
 }
 
 .hero-copy .hero-points {
@@ -1035,6 +1060,11 @@ img {
 
   .hero-actions {
     margin: 24px 0 20px;
+  }
+
+  .hero-demo-link {
+    margin-top: -2px;
+    justify-content: center;
   }
 
   .button {
