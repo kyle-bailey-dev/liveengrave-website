@@ -8,7 +8,37 @@ const rootDir = __dirname;
 
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(rootDir, { extensions: ['html'] }));
+
+const gaMeasurementId = String(process.env.GA_MEASUREMENT_ID || '').trim();
+
+const analyticsHeadSnippet = gaMeasurementId ? `
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', '${gaMeasurementId}');
+    </script>
+` : '';
+
+const sendHtmlPage = (res, fileName, statusCode = 200) => {
+  const filePath = path.join(rootDir, fileName);
+  let html = require('fs').readFileSync(filePath, 'utf8');
+  if (analyticsHeadSnippet && html.includes('</head>')) {
+    html = html.replace('</head>', `${analyticsHeadSnippet}
+  </head>`);
+  }
+  res.status(statusCode).type('html').send(html);
+};
+
+app.get('/', (_req, res) => sendHtmlPage(res, 'index.html'));
+app.get('/privacy-policy', (_req, res) => sendHtmlPage(res, 'privacy-policy.html'));
+app.get('/safety-policy', (_req, res) => sendHtmlPage(res, 'safety-policy.html'));
+app.get('/404', (_req, res) => sendHtmlPage(res, '404.html', 404));
+
+app.use(express.static(rootDir, { index: false }));
 
 const contactLimiter = rateLimit({
   windowMs: 10 * 60 * 1000,
@@ -170,7 +200,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
 app.use((req, res) => {
   if (req.accepts('html')) {
-    return res.status(404).sendFile(path.join(rootDir, '404.html'));
+    return sendHtmlPage(res, '404.html', 404);
   }
   return res.status(404).json({ ok: false, error: 'Not found.' });
 });

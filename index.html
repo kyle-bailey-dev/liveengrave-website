@@ -65,7 +65,7 @@
         <nav class="site-nav" id="site-nav">
           <a href="#how-it-works">How it works</a>
           <a href="#product-story">The experience</a>
-          <a href="#contact">Book a demo</a>
+          <a href="#contact" data-analytics-event="cta_click" data-analytics-location="header_nav">Book a demo</a>
         </nav>
       </header>
 
@@ -80,8 +80,8 @@
               Live Engrave is fast, interactive personalisation designed to keep your brand in their hands long after the event ends.
             </p>
             <div class="hero-actions">
-              <a class="button button--primary" href="#contact">Book a demo</a>
-              <a class="button button--secondary" href="#how-it-works">See the journey</a>
+              <a class="button button--primary" href="#contact" data-analytics-event="cta_click" data-analytics-location="hero_primary">Book a demo</a>
+              <a class="button button--secondary" href="#how-it-works" data-analytics-event="cta_click" data-analytics-location="hero_secondary">See the journey</a>
             </div>
             <ul class="hero-points">
               <li>Fast enough for live event footfall</li>
@@ -359,6 +359,7 @@
     <script src="./vendor/embla-carousel.umd.js"></script>
     <script src="./steps-carousel.js"></script>
     <script src="./effects.js"></script>
+    <script src="./analytics.js"></script>
     <script src="./contact-form.js"></script>
 
   </body>

@@ -35,6 +35,11 @@
       }
 
       form.reset();
+      if (window.liveEngraveAnalytics?.track) {
+        window.liveEngraveAnalytics.track('contact_form_submit', {
+          form_name: 'book_a_demo',
+        });
+      }
       setStatus('Thanks. We will get back to you shortly.', 'success');
     } catch (error) {
       setStatus(error.message || 'Message failed to send. Please try again shortly.', 'error');
