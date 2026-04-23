@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Engrave Demo</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      :root {
+        --bg: #0d0b12;
+        --panel: #171420;
+        --border: rgba(255, 255, 255, 0.08);
+        --text: #f6f3ff;
+        --muted: #a79dbb;
+        --accent: #6f54a8;
+        --accent-soft: rgba(111, 84, 168, 0.24);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, system-ui, sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(111, 84, 168, 0.18), transparent 38%),
+          linear-gradient(180deg, #12101a 0%, #0c0b11 100%);
+        color: var(--text);
+      }
+
+      .demo-shell {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 32px 20px;
+      }
+
+      .demo-layout {
+        width: min(1100px, 100%);
+        display: grid;
+        grid-template-columns: minmax(260px, 360px) minmax(280px, 420px);
+        gap: 48px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .demo-copy h1 {
+        margin: 0 0 16px;
+        font-family: "Roboto Slab", Georgia, serif;
+        font-size: clamp(2.2rem, 4vw, 3.8rem);
+        line-height: 0.98;
+      }
+
+      .demo-copy p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      .demo-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        padding: 9px 14px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        border: 1px solid rgba(255,255,255,0.06);
+        color: #d7cdf0;
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .demo-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 6px;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .phone-stage {
+        display: grid;
+        place-items: center;
+      }
+
+      .phone-frame {
+        position: relative;
+        width: min(100%, 380px);
+        aspect-ratio: 390 / 844;
+        padding: 16px;
+        border-radius: 46px;
+        background: linear-gradient(180deg, #2c2737 0%, #0b0a11 100%);
+        box-shadow:
+          0 40px 90px rgba(0, 0, 0, 0.48),
+          inset 0 1px 0 rgba(255,255,255,0.1),
+          inset 0 -1px 0 rgba(255,255,255,0.04);
+      }
+
+      .phone-frame::before {
+        content: "";
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 34%;
+        height: 26px;
+        border-radius: 0 0 18px 18px;
+        background: #09080d;
+        z-index: 3;
+      }
+
+      .phone-screen {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 34px;
+        background: #fff;
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .phone-screen iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #fff;
+      }
+
+      @media (max-width: 900px) {
+        .demo-layout {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          text-align: center;
+        }
+
+        .demo-copy {
+          max-width: 640px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .demo-shell {
+          padding: 24px 14px 32px;
+        }
+
+        .demo-layout {
+          gap: 24px;
+        }
+
+        .phone-frame {
+          width: min(100%, 340px);
+          padding: 14px;
+          border-radius: 40px;
+        }
+
+        .phone-screen {
+          border-radius: 30px;
+        }
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+  </head>
+  <body>
+    <main class="demo-shell">
+      <section class="demo-layout">
+        <div class="demo-copy">
+          <div class="demo-pill">Live demo</div>
+          <h1>See the form exactly as guests use it.</h1>
+          <p>
+            This is the live mobile flow running inside a framed handset, so it can be reviewed
+            in context for sales demos, screenshots and stakeholder walkthroughs.
+          </p>
+          <a class="demo-link" href="https://app.liveengrave.com" target="_blank" rel="noreferrer">Open the full app</a>
+        </div>
+        <div class="phone-stage">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <iframe
+                src="https://app.liveengrave.com"
+                title="Live Engrave app demo"
+                loading="eager"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

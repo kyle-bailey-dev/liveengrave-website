@@ -36,6 +36,7 @@ const sendHtmlPage = (res, fileName, statusCode = 200) => {
 app.get('/', (_req, res) => sendHtmlPage(res, 'index.html'));
 app.get('/privacy-policy', (_req, res) => sendHtmlPage(res, 'privacy-policy.html'));
 app.get('/safety-policy', (_req, res) => sendHtmlPage(res, 'safety-policy.html'));
+app.get('/demo', (_req, res) => sendHtmlPage(res, 'demo.html'));
 app.get('/404', (_req, res) => sendHtmlPage(res, '404.html', 404));
 
 app.use(express.static(rootDir, { index: false }));
