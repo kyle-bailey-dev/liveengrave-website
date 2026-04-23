@@ -8,56 +8,80 @@
     <style>
       :root {
         --bg: #0d0b12;
-        --panel: #171420;
+        --bg-2: #13101b;
+        --panel: rgba(23, 20, 32, 0.78);
+        --panel-strong: rgba(28, 23, 40, 0.9);
         --border: rgba(255, 255, 255, 0.08);
         --text: #f6f3ff;
-        --muted: #a79dbb;
-        --accent: #6f54a8;
-        --accent-soft: rgba(111, 84, 168, 0.24);
+        --muted: #ada4c0;
+        --accent: #7a5ac0;
+        --accent-soft: rgba(122, 90, 192, 0.18);
       }
 
       * { box-sizing: border-box; }
+
       body {
         margin: 0;
         min-height: 100vh;
         font-family: Inter, system-ui, sans-serif;
         background:
-          radial-gradient(circle at top, rgba(111, 84, 168, 0.18), transparent 38%),
-          linear-gradient(180deg, #12101a 0%, #0c0b11 100%);
+          radial-gradient(circle at top, rgba(122, 90, 192, 0.16), transparent 34%),
+          linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
         color: var(--text);
       }
 
-      .demo-shell {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 32px 20px;
+      a { color: inherit; }
+
+      .page-shell {
+        width: min(1240px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 28px 0 72px;
       }
 
-      .demo-layout {
-        width: min(1100px, 100%);
-        display: grid;
-        grid-template-columns: minmax(260px, 360px) minmax(280px, 420px);
-        gap: 48px;
+      .topbar {
+        display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 34px;
       }
 
-      .demo-copy h1 {
-        margin: 0 0 16px;
-        font-family: "Roboto Slab", Georgia, serif;
-        font-size: clamp(2.2rem, 4vw, 3.8rem);
-        line-height: 0.98;
+      .topbar__brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
       }
 
-      .demo-copy p {
-        margin: 0 0 18px;
+      .topbar__brand img {
+        width: 148px;
+        height: auto;
+        display: block;
+      }
+
+      .topbar__back {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
         color: var(--muted);
-        line-height: 1.6;
-        font-size: 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
       }
 
-      .demo-pill {
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(320px, 470px) minmax(340px, 1fr);
+        gap: 54px;
+        align-items: center;
+        margin-bottom: 52px;
+      }
+
+      .hero-copy {
+        max-width: 560px;
+      }
+
+      .eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 10px;
@@ -65,31 +89,108 @@
         padding: 9px 14px;
         border-radius: 999px;
         background: var(--accent-soft);
-        border: 1px solid rgba(255,255,255,0.06);
-        color: #d7cdf0;
-        font-size: 0.82rem;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        color: #d8cff0;
+        font-size: 0.8rem;
+        font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      .demo-link {
+      h1, h2, h3 {
+        margin: 0;
+        font-family: "Roboto Slab", Georgia, serif;
+        letter-spacing: -0.03em;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4.6rem);
+        line-height: 0.96;
+        max-width: 11ch;
+      }
+
+      .hero-copy > p {
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 1.03rem;
+        line-height: 1.7;
+        max-width: 46ch;
+      }
+
+      .hero-points {
+        display: grid;
+        gap: 14px;
+        margin: 28px 0 0;
+      }
+
+      .hero-point {
+        display: grid;
+        grid-template-columns: 12px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .hero-point__dot {
+        width: 10px;
+        height: 10px;
+        margin-top: 0.45rem;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 6px rgba(122, 90, 192, 0.16);
+      }
+
+      .hero-point strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.98rem;
+      }
+
+      .hero-point span {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .button {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        margin-top: 6px;
-        color: var(--text);
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-size: 0.95rem;
+        font-weight: 700;
         text-decoration: none;
-        font-weight: 600;
+      }
+
+      .button--primary {
+        background: linear-gradient(135deg, #7a5ac0 0%, #6145a1 100%);
+        color: #fff;
+        box-shadow: 0 16px 34px rgba(67, 46, 113, 0.28);
+      }
+
+      .button--secondary {
+        border-color: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
       }
 
       .phone-stage {
         display: grid;
-        place-items: center;
+        justify-items: center;
       }
 
       .phone-frame {
         position: relative;
-        width: min(100%, 380px);
+        width: min(100%, 400px);
         aspect-ratio: 390 / 844;
         padding: 16px;
         border-radius: 46px;
@@ -210,36 +311,170 @@
         background: #fff;
       }
 
-      @media (max-width: 900px) {
-        .demo-layout {
+      .phone-caption {
+        max-width: 28ch;
+        margin: 18px auto 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.55;
+        text-align: center;
+      }
+
+      .section {
+        margin-top: 52px;
+        padding: 32px;
+        border-radius: 28px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(16px);
+      }
+
+      .section-header {
+        display: grid;
+        gap: 10px;
+        max-width: 52ch;
+        margin-bottom: 26px;
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .value-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .value-card {
+        padding: 22px;
+        border-radius: 22px;
+        background: var(--panel-strong);
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .value-card h3 {
+        font-size: 1.35rem;
+        margin-bottom: 12px;
+      }
+
+      .value-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .step {
+        padding: 22px;
+        border-radius: 22px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .step__number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        margin-bottom: 14px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: #d9cff4;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .step h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .final-cta {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .final-cta p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      @media (max-width: 1050px) {
+        .hero {
           grid-template-columns: 1fr;
-          gap: 32px;
-          text-align: center;
+          gap: 34px;
         }
 
-        .demo-copy {
-          max-width: 640px;
-          margin: 0 auto;
+        .hero-copy {
+          max-width: 100%;
+        }
+
+        .phone-stage {
+          justify-items: start;
+        }
+
+        .value-grid,
+        .steps,
+        .final-cta {
+          grid-template-columns: 1fr;
         }
       }
 
-      @media (max-width: 520px) {
-        .demo-shell {
-          padding: 24px 14px 32px;
+      @media (max-width: 720px) {
+        .page-shell {
+          width: min(100% - 24px, 1240px);
+          padding-top: 18px;
+          padding-bottom: 48px;
         }
 
-        .demo-layout {
-          gap: 24px;
+        .topbar {
+          margin-bottom: 24px;
+        }
+
+        .topbar__brand img {
+          width: 124px;
+        }
+
+        h1 {
+          max-width: none;
+          font-size: clamp(2.2rem, 10vw, 3.2rem);
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .section {
+          margin-top: 38px;
+          padding: 24px 18px;
+          border-radius: 22px;
+        }
+
+        .phone-stage {
+          justify-items: center;
         }
 
         .phone-frame {
-          width: min(100%, 340px);
-          padding: 14px;
-          border-radius: 40px;
-        }
-
-        .phone-screen {
-          border-radius: 30px;
+          width: min(100%, 360px);
         }
       }
     </style>
@@ -249,17 +484,50 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
   </head>
   <body>
-    <main class="demo-shell">
-      <section class="demo-layout">
-        <div class="demo-copy">
-          <div class="demo-pill">Live demo</div>
-          <h1>See the form exactly as guests use it.</h1>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="topbar__brand" href="/">
+          <img src="/assets/logo-stacked.png" alt="Live Engrave" />
+        </a>
+        <a class="topbar__back" href="/">Back to main site</a>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Interactive demo</div>
+          <h1>Show the live form, not just a static mockup.</h1>
           <p>
-            This is the live mobile flow running inside a framed handset, so it can be reviewed
-            in context for sales demos, screenshots and stakeholder walkthroughs.
+            This page lets prospects experience the exact mobile journey guests use on the day. It demonstrates how simple the flow feels in the hand, how quickly the personalisation happens, and why the process works so well in live event environments.
           </p>
-          <a class="demo-link" href="https://app.liveengrave.com" target="_blank" rel="noreferrer">Open the full app</a>
+          <div class="hero-points">
+            <div class="hero-point">
+              <span class="hero-point__dot"></span>
+              <div>
+                <strong>Fast to understand</strong>
+                <span>The form is lightweight, clear and built for real event footfall rather than slow, high-friction data entry.</span>
+              </div>
+            </div>
+            <div class="hero-point">
+              <span class="hero-point__dot"></span>
+              <div>
+                <strong>Simple to complete</strong>
+                <span>Guests can personalise on their own phone in seconds, without needing staff to verbally capture details.</span>
+              </div>
+            </div>
+            <div class="hero-point">
+              <span class="hero-point__dot"></span>
+              <div>
+                <strong>Designed for handover</strong>
+                <span>The QR-led journey turns what could be messy order handling into a clean, repeatable production flow.</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="button button--primary" href="https://app.liveengrave.com" target="_blank" rel="noreferrer">Open full app</a>
+            <a class="button button--secondary" href="#how-it-works">See the process</a>
+          </div>
         </div>
+
         <div class="phone-stage">
           <div class="phone-frame">
             <div class="phone-screen">
@@ -288,7 +556,66 @@
               </div>
             </div>
           </div>
+          <p class="phone-caption">Live embedded demo of the guest-facing mobile form, shown inside a handset context for sales walkthroughs and event planning.</p>
         </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Why this matters in a sales conversation</h2>
+          <p>This is not just a form. It is the entry point to a production workflow that feels premium to the guest and operationally simple for the team running the activation.</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card">
+            <h3>Less friction</h3>
+            <p>Guests complete the journey themselves on mobile, which reduces queue hesitation and removes the need for staff to manually capture details.</p>
+          </article>
+          <article class="value-card">
+            <h3>Cleaner handover</h3>
+            <p>The digital flow creates a clear QR-based bridge between guest input and production, so operators can move faster with fewer mistakes.</p>
+          </article>
+          <article class="value-card">
+            <h3>Better perceived value</h3>
+            <p>The journey feels designed and premium from the first interaction, which raises how the finished engraved item is experienced and remembered.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="section">
+        <div class="section-header">
+          <h2>The process, in four simple steps</h2>
+          <p>The demo mirrors the same flow used at live events. It is simple enough for guests to complete quickly and structured enough for teams to run reliably.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step__number">1</div>
+            <h3>Enter details</h3>
+            <p>The guest completes a short mobile form designed to be fast, obvious and low-friction even in busy environments.</p>
+          </article>
+          <article class="step">
+            <div class="step__number">2</div>
+            <h3>Review and confirm</h3>
+            <p>The form presents a clean confirmation step so the guest can see exactly what they are about to submit.</p>
+          </article>
+          <article class="step">
+            <div class="step__number">3</div>
+            <h3>Receive the QR</h3>
+            <p>The QR becomes the production handoff. Staff no longer need to re-enter names or verbally double-check spellings.</p>
+          </article>
+          <article class="step">
+            <div class="step__number">4</div>
+            <h3>Engrave and hand over</h3>
+            <p>The digital input becomes a physical branded keepsake in seconds, with a process that is easier to run and easier to scale.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section final-cta">
+        <div>
+          <h2>Want to see the full event setup?</h2>
+          <p>Use the demo to understand the guest journey, then head back to the main site to book a walkthrough of the full Live Engrave experience.</p>
+        </div>
+        <a class="button button--primary" href="/#contact">Book a demo</a>
       </section>
     </main>
 
@@ -310,5 +637,4 @@
       })();
     </script>
   </body>
-
 </html>
