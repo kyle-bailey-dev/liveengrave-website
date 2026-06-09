@@ -191,6 +191,7 @@ img {
 
 .hero-media {
   position: relative;
+  grid-column: 2;
   z-index: 2;
   display: grid;
   place-items: center;
@@ -260,6 +261,14 @@ img {
     linear-gradient(135deg, rgba(24, 18, 39, 0.42), rgba(15, 14, 23, 0.04) 38%, rgba(15, 14, 23, 0.16)),
     radial-gradient(circle at 100% 0%, rgba(120, 84, 255, 0.2), transparent 30%),
     radial-gradient(circle at 0% 100%, rgba(45, 225, 191, 0.14), transparent 28%);
+}
+
+.hero-media__device {
+  position: absolute;
+  inset: -1.5% -1.5%;
+  background: url("https://assets.liveengrave.com/website-assets/video-frame.png") center / 100% 100% no-repeat;
+  opacity: 0.96;
+  pointer-events: none;
 }
 
 .hero-media__bug {
@@ -522,6 +531,7 @@ img {
 
 .hero-copy {
   position: relative;
+  grid-column: 1;
   z-index: 2;
   max-width: 560px;
   padding: 0;
@@ -1335,6 +1345,7 @@ img {
 
   .hero-media {
     order: -1;
+    grid-column: auto;
     width: 100%;
     max-width: none;
     justify-self: stretch;
@@ -1367,6 +1378,7 @@ img {
   }
 
   .hero-copy {
+    grid-column: auto;
     width: min(100%, calc(var(--content) - 24px));
     max-width: 100%;
     margin: 0 auto;
