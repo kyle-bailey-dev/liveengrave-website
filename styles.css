@@ -161,40 +161,40 @@ img {
 
 .hero-video-trigger {
   position: absolute;
-  right: 36px;
+  right: 42px;
   top: 50%;
   z-index: 3;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  min-height: 54px;
-  padding: 0 20px 0 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  gap: 14px;
+  min-height: 68px;
+  padding: 0 24px 0 18px;
+  border: 1px solid rgba(215, 199, 255, 0.22);
   border-radius: 999px;
-  background: rgba(12, 11, 18, 0.72);
-  backdrop-filter: blur(12px);
+  background: rgba(12, 11, 18, 0.78);
+  backdrop-filter: blur(14px);
   color: #fff;
-  font: 700 14px/1 var(--font-sans);
-  letter-spacing: 0.02em;
   cursor: pointer;
   pointer-events: auto;
   transform: translateY(-50%);
-  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(215, 199, 255, 0.05) inset;
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .hero-video-trigger:hover,
 .hero-video-trigger:focus-visible {
   transform: translateY(calc(-50% - 1px));
-  background: rgba(18, 17, 27, 0.84);
-  border-color: rgba(215, 199, 255, 0.26);
+  background: rgba(18, 17, 27, 0.88);
+  border-color: rgba(215, 199, 255, 0.34);
+  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(215, 199, 255, 0.08) inset;
 }
 
 .hero-video-trigger__icon {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: linear-gradient(180deg, #6f53ab 0%, var(--accent) 100%);
-  box-shadow: 0 12px 24px rgba(79, 59, 120, 0.26);
+  background: linear-gradient(180deg, #7b5eb9 0%, var(--accent) 100%);
+  box-shadow: 0 14px 28px rgba(79, 59, 120, 0.34);
   position: relative;
   flex-shrink: 0;
 }
@@ -210,6 +210,31 @@ img {
   border-bottom: 7px solid transparent;
   border-left: 11px solid #fff;
   transform: translate(-34%, -50%);
+}
+
+.hero-video-trigger__label {
+  display: grid;
+  gap: 5px;
+  text-align: left;
+}
+
+.hero-video-trigger__label strong {
+  display: block;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.hero-video-trigger__label small {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 
@@ -1103,8 +1128,10 @@ img {
 
   .hero-video-trigger {
     right: 18px;
-    top: 196px;
+    top: 188px;
     bottom: auto;
+    min-height: 60px;
+    padding: 0 18px 0 14px;
     transform: none;
   }
 
