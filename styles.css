@@ -139,7 +139,7 @@ img {
   inset: 0;
   right: -235px;
   z-index: 0;
-  pointer-events: none;
+  pointer-events: auto;
   opacity: 1;
   will-change: transform;
   mask-image: radial-gradient(circle at center, black 88%, transparent 93%);
@@ -150,11 +150,70 @@ img {
   content: none;
 }
 
-.hero-backdrop img {
+.hero-backdrop img,
+.hero-backdrop video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
+  pointer-events: none;
+}
+
+.hero-video-trigger {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 0 20px 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(12, 11, 18, 0.72);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  font: 700 14px/1 var(--font-sans);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateY(-50%);
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.hero-video-trigger:hover,
+.hero-video-trigger:focus-visible {
+  transform: translateY(calc(-50% - 1px));
+  background: rgba(18, 17, 27, 0.84);
+  border-color: rgba(215, 199, 255, 0.26);
+}
+
+.hero-video-trigger__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #6f53ab 0%, var(--accent) 100%);
+  box-shadow: 0 12px 24px rgba(79, 59, 120, 0.26);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hero-video-trigger__icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid #fff;
+  transform: translate(-34%, -50%);
+}
+
+.hero-backdrop.is-playing .hero-video-trigger {
+  display: none;
 }
 
 .eyebrow {
@@ -1043,6 +1102,18 @@ img {
     overflow: hidden;
     mask-image: linear-gradient(180deg, black 0%, black 78%, transparent 100%);
     -webkit-mask-image: linear-gradient(180deg, black 0%, black 78%, transparent 100%);
+  }
+
+  .hero-video-trigger {
+    right: 18px;
+    top: auto;
+    bottom: 18px;
+    transform: none;
+  }
+
+  .hero-video-trigger:hover,
+  .hero-video-trigger:focus-visible {
+    transform: translateY(-1px);
   }
 
   .hero-backdrop::after {
