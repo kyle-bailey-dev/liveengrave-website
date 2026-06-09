@@ -475,6 +475,34 @@ img {
   color: var(--text);
 }
 
+.button--video {
+  gap: 10px;
+  padding-left: 16px;
+}
+
+.button--video__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #9f84df, #6b4ca8 72%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 16px rgba(79, 59, 120, 0.22);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.button--video__icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid #fff;
+  transform: translate(-28%, -50%);
+}
+
 .hero-copy {
   position: relative;
   z-index: 2;
@@ -519,19 +547,18 @@ img {
 .hero-points--journey {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 18px;
 }
 
 .hero-points--journey li {
   align-items: center;
-  padding: 10px 16px;
-  border: 1px solid rgba(169, 139, 223, 0.18);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
   line-height: 1;
   text-transform: uppercase;
 }
@@ -1407,6 +1434,14 @@ img {
 
   .hero-actions {
     margin: 24px 0 20px;
+  }
+
+  .button--video {
+    justify-content: flex-start;
+  }
+
+  .hero-points--journey {
+    gap: 14px;
   }
 
 
