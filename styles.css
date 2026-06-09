@@ -672,6 +672,7 @@ img {
   gap: 22px;
   width: fit-content;
   max-width: min(100%, 720px);
+  justify-self: center;
   margin-top: 22px;
   padding: 22px 24px 22px 24px;
   border: 0;
@@ -718,6 +719,7 @@ img {
   z-index: 1;
   display: block;
   max-width: 11ch;
+  justify-self: center;
   font-family: var(--font-serif);
   font-size: clamp(2.15rem, 3vw, 3rem);
   font-weight: 700;
@@ -733,6 +735,7 @@ img {
   justify-items: center;
   align-content: center;
   min-width: 120px;
+  justify-self: center;
 }
 
 .experience-film__action-disc {
