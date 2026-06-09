@@ -1,37 +1,58 @@
 (() => {
   const backdrop = document.querySelector('[data-hero-video]');
-  const hero = document.querySelector('.hero');
-  const trigger = document.querySelector('.hero-video-trigger');
-  if (!backdrop || !hero || !trigger) return;
+  const openButton = document.querySelector('[data-open-video]');
+  const lightbox = document.querySelector('[data-video-lightbox]');
+  const frame = document.querySelector('[data-video-frame]');
+  const closeButtons = document.querySelectorAll('[data-close-video]');
+  if (!backdrop || !openButton || !lightbox || !frame) return;
 
-  trigger.addEventListener('click', () => {
-    if (hero.classList.contains('is-playing')) return;
+  const src = backdrop.getAttribute('data-video-src');
+  if (!src) return;
 
-    const src = backdrop.getAttribute('data-video-src');
-    if (!src) return;
+  let video = null;
+  let lastActive = null;
 
-    const poster = hero.querySelector('img');
-    const video = document.createElement('video');
+  const buildVideo = () => {
+    if (video) return video;
+    video = document.createElement('video');
     video.src = src;
     video.controls = true;
-    video.autoplay = true;
-    video.muted = true;
-    video.playsInline = true;
     video.preload = 'metadata';
-    if (poster?.getAttribute('src')) {
-      video.poster = poster.getAttribute('src');
-    }
+    video.playsInline = true;
+    frame.appendChild(video);
+    return video;
+  };
 
-    backdrop.appendChild(video);
-    poster?.remove();
-    hero.classList.add('is-playing');
-
-    const playAttempt = video.play();
-    if (playAttempt && typeof playAttempt.catch === 'function') {
-      playAttempt.catch(() => {
-        video.muted = false;
-        video.play().catch(() => {});
-      });
+  const closeLightbox = () => {
+    lightbox.hidden = true;
+    document.body.classList.remove('video-open');
+    if (video) {
+      video.pause();
     }
-  }, { once: true });
+    if (lastActive instanceof HTMLElement) {
+      lastActive.focus();
+    }
+  };
+
+  const openLightbox = () => {
+    lastActive = document.activeElement;
+    const player = buildVideo();
+    lightbox.hidden = false;
+    document.body.classList.add('video-open');
+    player.currentTime = 0;
+    player.play().catch(() => {});
+    const close = lightbox.querySelector('.video-lightbox__close');
+    if (close instanceof HTMLElement) {
+      close.focus();
+    }
+  };
+
+  openButton.addEventListener('click', openLightbox);
+  closeButtons.forEach((button) => button.addEventListener('click', closeLightbox));
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !lightbox.hidden) {
+      closeLightbox();
+    }
+  });
 })();

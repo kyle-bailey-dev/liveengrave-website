@@ -74,7 +74,7 @@
           <div class="hero-backdrop" data-parallax="0.04" data-hero-video data-video-src="https://assets.liveengrave.com/website-assets/Live%20Engrave%20-%20horizontal.mp4">
             <img src="./photos/hero-new.webp" alt="Premium Live Engrave event hero visual" />
           </div>
-          <button class="hero-video-trigger" type="button" aria-label="Play Live Engrave hero video">
+          <button class="hero-video-trigger" type="button" aria-label="Play Live Engrave hero video" data-open-video>
             <span class="hero-video-trigger__icon" aria-hidden="true"></span>
             <span>Play video</span>
           </button>
@@ -96,6 +96,23 @@
             </ul>
           </div>
         </section>
+
+
+        <div class="video-lightbox" data-video-lightbox hidden>
+          <div class="video-lightbox__backdrop" data-close-video></div>
+          <div class="video-lightbox__dialog" role="dialog" aria-modal="true" aria-labelledby="hero-video-title">
+            <div class="video-lightbox__header">
+              <div>
+                <p class="video-lightbox__eyebrow">Live Engrave</p>
+                <h2 id="hero-video-title">See the event experience in motion.</h2>
+              </div>
+              <button class="video-lightbox__close" type="button" aria-label="Close video" data-close-video>
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="video-lightbox__frame" data-video-frame></div>
+          </div>
+        </div>
 
         <section id="product-story" class="section product-story" data-parallax-group>
           <div class="section-heading section-heading--narrow">
