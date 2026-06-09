@@ -238,7 +238,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 58% center;
+  object-position: center center;
   transform: scale(1.02);
 }
 
@@ -442,16 +442,6 @@ img {
   font-size: 1rem;
   line-height: 1.72;
 }
-
-.hero-lead--stacked {
-  display: grid;
-  gap: 16px;
-}
-
-.hero-lead--stacked p {
-  margin: 0;
-}
-
 
 .hero-copy > * {
   opacity: 0;
