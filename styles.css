@@ -1494,6 +1494,10 @@ img {
     font-size: 12px;
   }
 
+  .products-section__features-grid {
+    grid-template-columns: 1fr;
+  }
+
   .contact-section {
     gap: 18px;
     padding: 18px;
