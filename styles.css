@@ -605,6 +605,7 @@ img {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 22px;
+  align-items: stretch;
 }
 
 .story-panel,
@@ -622,6 +623,7 @@ img {
 .story-panel {
   display: grid;
   gap: 0;
+  height: 100%;
   border-radius: 28px;
   overflow: hidden;
   will-change: transform;
@@ -665,14 +667,15 @@ img {
 .experience-watch-card {
   position: relative;
   display: grid;
-  gap: 12px;
-  width: 100%;
+  gap: 14px;
+  width: min(100%, 620px);
+  justify-self: end;
   margin-top: 22px;
-  padding: 24px 28px;
+  padding: 24px 28px 24px 24px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 28px;
-  background: linear-gradient(180deg, rgba(24, 22, 34, 0.84), rgba(18, 17, 27, 0.76));
-  box-shadow: var(--shadow-soft);
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(22, 21, 31, 0.88), rgba(14, 13, 22, 0.82));
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   color: #fff;
   text-align: left;
   cursor: pointer;
@@ -684,15 +687,17 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(215, 199, 255, 0.14), transparent 38%);
+  background:
+    linear-gradient(135deg, rgba(215, 199, 255, 0.12), transparent 34%),
+    radial-gradient(circle at 90% 85%, rgba(112, 84, 170, 0.2), transparent 30%);
   pointer-events: none;
 }
 
 .experience-watch-card:hover,
 .experience-watch-card:focus-visible {
   transform: translateY(-2px);
-  border-color: rgba(169, 139, 223, 0.22);
-  box-shadow: 0 26px 54px rgba(0, 0, 0, 0.24);
+  border-color: rgba(169, 139, 223, 0.24);
+  box-shadow: 0 28px 58px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .experience-watch-card__eyebrow {
@@ -710,9 +715,9 @@ img {
   position: relative;
   z-index: 1;
   display: block;
-  max-width: 18ch;
+  max-width: 15ch;
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-size: clamp(2rem, 3vw, 2.65rem);
   font-weight: 700;
   line-height: 0.98;
   letter-spacing: -0.04em;
@@ -723,19 +728,28 @@ img {
   z-index: 1;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  width: fit-content;
+  padding-top: 4px;
   color: rgba(255, 255, 255, 0.72);
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
 }
 
+.experience-watch-card__meta::after {
+  content: "";
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(215, 199, 255, 0.36), transparent);
+}
+
 .experience-watch-card__icon {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #9f84df, #6b4ca8 72%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 22px rgba(79, 59, 120, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 12px 24px rgba(79, 59, 120, 0.3);
   position: relative;
   flex-shrink: 0;
 }
@@ -1492,13 +1506,19 @@ img {
   }
 
   .experience-watch-card {
-    margin-top: 18px;
+    width: 100%;
+    justify-self: stretch;
+    margin-top: 22px;
     padding: 20px;
     border-radius: 24px;
   }
 
   .experience-watch-card__title {
     font-size: clamp(1.65rem, 7vw, 2.2rem);
+  }
+
+  .experience-watch-card__meta::after {
+    display: none;
   }
 
   .story-panel__body h3,
