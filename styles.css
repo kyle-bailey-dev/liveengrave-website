@@ -800,10 +800,28 @@ img {
   max-width: 14ch;
 }
 
+.tag-marquee {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  overflow: hidden;
+  margin-top: 4px;
+  mask-image: linear-gradient(90deg, transparent 0, black 7%, black 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, black 7%, black 93%, transparent 100%);
+}
+
 .products-section .tag-list {
   display: flex;
-  flex-wrap: wrap;
+  flex: 0 0 auto;
+  align-items: center;
   gap: 12px;
+  min-width: max-content;
+  animation: tag-marquee-scroll 26s linear infinite;
+}
+
+.tag-marquee:hover .tag-list,
+.tag-marquee:focus-within .tag-list {
+  animation-play-state: paused;
 }
 
 .tag-list span {
@@ -816,6 +834,17 @@ img {
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+@keyframes tag-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - 12px));
+  }
 }
 
 .mockup-panel {
