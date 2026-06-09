@@ -606,6 +606,7 @@ img {
   grid-template-columns: 1.15fr 0.85fr;
   gap: 22px;
   align-items: stretch;
+  grid-auto-rows: 1fr;
 }
 
 .story-panel,
@@ -623,10 +624,9 @@ img {
 .story-panel {
   display: grid;
   gap: 0;
-  height: 100%;
+  min-height: 100%;
   border-radius: 28px;
   overflow: hidden;
-  will-change: transform;
 }
 
 .story-panel--feature {
@@ -664,108 +664,142 @@ img {
   padding: 30px;
 }
 
-.experience-watch-card {
+.experience-film {
   position: relative;
   display: grid;
-  gap: 14px;
-  width: min(100%, 620px);
-  justify-self: end;
+  grid-template-columns: minmax(0, 1.15fr) auto;
+  grid-template-areas:
+    "eyebrow action"
+    "title action"
+    "description action";
+  gap: 12px 28px;
+  width: 100%;
   margin-top: 22px;
-  padding: 24px 28px 24px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 28px 30px;
+  border: 0;
   border-radius: 30px;
-  background: linear-gradient(180deg, rgba(22, 21, 31, 0.88), rgba(14, 13, 22, 0.82));
-  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  color: #fff;
+  background:
+    linear-gradient(135deg, rgba(244, 238, 228, 0.98), rgba(231, 222, 208, 0.96)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(240, 234, 224, 0.92));
+  color: #17141f;
   text-align: left;
   cursor: pointer;
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.16);
   overflow: hidden;
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.experience-watch-card::before {
+.experience-film::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, rgba(215, 199, 255, 0.12), transparent 34%),
-    radial-gradient(circle at 90% 85%, rgba(112, 84, 170, 0.2), transparent 30%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.32), transparent 28%),
+    radial-gradient(circle at 86% 50%, rgba(125, 93, 188, 0.16), transparent 26%);
   pointer-events: none;
 }
 
-.experience-watch-card:hover,
-.experience-watch-card:focus-visible {
-  transform: translateY(-2px);
-  border-color: rgba(169, 139, 223, 0.24);
-  box-shadow: 0 28px 58px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+.experience-film::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  right: 114px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(23, 20, 31, 0.06), rgba(23, 20, 31, 0.2), rgba(23, 20, 31, 0.06));
 }
 
-.experience-watch-card__eyebrow {
+.experience-film:hover,
+.experience-film:focus-visible {
+  border: 0;
+  transform: none;
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.16);
+}
+
+.experience-film__eyebrow {
+  grid-area: eyebrow;
   position: relative;
   z-index: 1;
-  color: #a98bdf;
+  margin: 0;
+  color: #7a61aa;
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-.experience-watch-card__title {
+.experience-film__title {
+  grid-area: title;
   position: relative;
   z-index: 1;
   display: block;
-  max-width: 15ch;
+  max-width: 13ch;
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3vw, 2.65rem);
+  font-size: clamp(2.3rem, 3.4vw, 3.4rem);
   font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
 }
 
-.experience-watch-card__meta {
+.experience-film__description {
+  grid-area: description;
   position: relative;
   z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  width: fit-content;
-  padding-top: 4px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 14px;
+  display: block;
+  max-width: 44ch;
+  color: rgba(23, 20, 31, 0.72);
+  font-size: 15px;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.65;
 }
 
-.experience-watch-card__meta::after {
-  content: "";
-  width: 44px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(215, 199, 255, 0.36), transparent);
+.experience-film__action {
+  grid-area: action;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 12px;
+  min-width: 136px;
 }
 
-.experience-watch-card__icon {
-  width: 42px;
-  height: 42px;
+.experience-film__action-disc {
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #9f84df, #6b4ca8 72%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 12px 24px rgba(79, 59, 120, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 18px 30px rgba(79, 59, 120, 0.28);
   position: relative;
-  flex-shrink: 0;
 }
 
-.experience-watch-card__icon::before {
+.experience-film__action-disc::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 0;
   height: 0;
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
-  border-left: 11px solid #fff;
-  transform: translate(-32%, -50%);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 16px solid #fff;
+  transform: translate(-28%, -50%);
 }
+
+.experience-film__action-copy {
+  display: block;
+  color: rgba(23, 20, 31, 0.86);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
+
 
 .story-kicker {
   margin: 0;
@@ -1505,20 +1539,40 @@ img {
     padding: 20px;
   }
 
-  .experience-watch-card {
-    width: 100%;
-    justify-self: stretch;
+  .experience-film {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "eyebrow"
+      "title"
+      "description"
+      "action";
+    gap: 12px;
     margin-top: 22px;
-    padding: 20px;
+    padding: 22px 20px;
     border-radius: 24px;
   }
 
-  .experience-watch-card__title {
-    font-size: clamp(1.65rem, 7vw, 2.2rem);
+  .experience-film::after {
+    display: none;
   }
 
-  .experience-watch-card__meta::after {
-    display: none;
+  .experience-film__title {
+    max-width: none;
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+  }
+
+  .experience-film__description {
+    max-width: none;
+  }
+
+  .experience-film__action {
+    justify-items: start;
+    min-width: 0;
+    padding-top: 4px;
+  }
+
+  .experience-film__action-copy {
+    text-align: left;
   }
 
   .story-panel__body h3,
