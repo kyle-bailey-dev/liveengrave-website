@@ -666,14 +666,13 @@ img {
 
 .experience-film {
   position: relative;
-  display: inline-grid;
+  display: grid;
   grid-template-columns: minmax(0, auto) auto;
   align-items: center;
   gap: 22px;
   width: fit-content;
   max-width: min(100%, 720px);
-  justify-self: center;
-  margin-top: 22px;
+  margin: 22px auto 0;
   padding: 22px 24px 22px 24px;
   border: 0;
   border-radius: 30px;
