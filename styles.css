@@ -1325,7 +1325,7 @@ img {
   }
 
   .button--video {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .hero-points--journey {
