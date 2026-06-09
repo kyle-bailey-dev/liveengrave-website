@@ -401,21 +401,21 @@ img {
   }
 }
 
-.hero-kicker {
-  margin: 0 0 16px;
-  color: rgba(215, 199, 255, 0.84);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
 .hero-lead {
   max-width: 34ch;
   margin: 22px 0 30px;
   color: rgba(233, 229, 244, 0.78);
   font-size: 1.02rem;
   line-height: 1.7;
+}
+
+.hero-lead--stacked {
+  display: grid;
+  gap: 16px;
+}
+
+.hero-lead--stacked p {
+  margin: 0;
 }
 
 
@@ -1343,8 +1343,8 @@ img {
   }
 
   .hero h1 {
-    max-width: 9ch;
-    font-size: clamp(2.5rem, 10vw, 3.8rem);
+    max-width: 10ch;
+    font-size: clamp(2.7rem, 10vw, 4.1rem);
     line-height: 0.94;
   }
 
@@ -1684,6 +1684,7 @@ img {
 
   .hero h1 {
     font-size: clamp(1.95rem, 11vw, 2.5rem);
+    max-width: 10.5ch;
   }
 
   .hero-lead,
