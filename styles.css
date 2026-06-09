@@ -192,6 +192,7 @@ img {
 .hero-media {
   position: relative;
   grid-column: 2;
+  grid-row: 1;
   z-index: 2;
   display: grid;
   place-items: center;
@@ -531,6 +532,7 @@ img {
 .hero-copy {
   position: relative;
   grid-column: 1;
+  grid-row: 1;
   z-index: 2;
   max-width: 548px;
   align-self: start;
