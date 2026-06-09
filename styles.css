@@ -617,8 +617,8 @@ img {
   grid-template-columns: minmax(0, auto) auto;
   align-items: center;
   gap: 22px;
-  width: fit-content;
-  max-width: min(100%, 720px);
+  width: 100%;
+  max-width: none;
   margin: 22px auto 0;
   padding: 22px 24px 22px 24px;
   border: 0;
@@ -670,7 +670,6 @@ img {
   display: grid;
   justify-items: center;
   align-content: center;
-  min-width: 120px;
   justify-self: center;
 }
 
