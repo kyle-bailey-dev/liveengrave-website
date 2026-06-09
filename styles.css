@@ -1297,10 +1297,10 @@ img {
     min-height: auto;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    padding: 8px 12px 24px;
+    padding: 0 12px 24px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
     border-radius: 24px;
     overflow: hidden;
   }
@@ -1318,11 +1318,11 @@ img {
     inset: auto;
     order: -1;
     width: 100%;
-    height: 188px;
-    margin-bottom: -86px;
+    height: 136px;
+    margin-bottom: -18px;
     border-radius: 24px;
     overflow: hidden;
-    opacity: 0.42;
+    opacity: 0.34;
     filter: blur(26px) saturate(1.05);
     mask-image: linear-gradient(180deg, black 0%, black 74%, transparent 100%);
     -webkit-mask-image: linear-gradient(180deg, black 0%, black 74%, transparent 100%);
@@ -1374,7 +1374,7 @@ img {
     width: min(100%, calc(var(--content) - 24px));
     max-width: 100%;
     margin: 0 auto;
-    padding: 18px 18px 8px;
+    padding: 14px 18px 8px;
     border-radius: 24px;
     background: rgba(12, 11, 18, 0.42);
     backdrop-filter: blur(10px);
