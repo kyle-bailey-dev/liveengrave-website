@@ -1,12 +1,13 @@
 (() => {
-  const hero = document.querySelector('[data-hero-video]');
-  const trigger = hero?.querySelector('.hero-video-trigger');
-  if (!hero || !trigger) return;
+  const backdrop = document.querySelector('[data-hero-video]');
+  const hero = document.querySelector('.hero');
+  const trigger = document.querySelector('.hero-video-trigger');
+  if (!backdrop || !hero || !trigger) return;
 
   trigger.addEventListener('click', () => {
     if (hero.classList.contains('is-playing')) return;
 
-    const src = hero.getAttribute('data-video-src');
+    const src = backdrop.getAttribute('data-video-src');
     if (!src) return;
 
     const poster = hero.querySelector('img');
@@ -21,7 +22,7 @@
       video.poster = poster.getAttribute('src');
     }
 
-    hero.appendChild(video);
+    backdrop.appendChild(video);
     poster?.remove();
     hero.classList.add('is-playing');
 

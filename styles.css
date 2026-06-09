@@ -212,7 +212,7 @@ img {
   transform: translate(-34%, -50%);
 }
 
-.hero-backdrop.is-playing .hero-video-trigger {
+.hero.is-playing .hero-video-trigger {
   display: none;
 }
 
@@ -1106,8 +1106,8 @@ img {
 
   .hero-video-trigger {
     right: 18px;
-    top: auto;
-    bottom: 18px;
+    top: 196px;
+    bottom: auto;
     transform: none;
   }
 
