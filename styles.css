@@ -238,16 +238,6 @@ img {
   text-align: left;
 }
 
-.hero-video-trigger__label small {
-  display: block;
-  color: rgba(215, 199, 255, 0.78);
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
 .hero-video-trigger__label strong {
   display: block;
   max-width: 18ch;
