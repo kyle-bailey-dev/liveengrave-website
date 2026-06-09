@@ -125,18 +125,18 @@ img {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.96fr);
-  gap: 44px;
+  grid-template-columns: minmax(0, 1.02fr) minmax(380px, 0.92fr);
+  gap: 52px;
   align-items: center;
-  min-height: 640px;
-  padding: 52px 48px 70px;
+  min-height: 620px;
+  padding: 54px 52px 74px;
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 36px;
   background:
-    radial-gradient(circle at 8% 10%, rgba(219, 66, 255, 0.5), transparent 24%),
-    radial-gradient(circle at 96% 86%, rgba(63, 245, 206, 0.36), transparent 18%),
-    radial-gradient(circle at 76% 24%, rgba(94, 70, 204, 0.3), transparent 24%),
-    linear-gradient(135deg, rgba(24, 14, 42, 0.98), rgba(11, 10, 19, 0.96) 48%, rgba(8, 20, 40, 0.96));
+    radial-gradient(circle at 8% 10%, rgba(219, 66, 255, 0.44), transparent 24%),
+    radial-gradient(circle at 92% 18%, rgba(145, 108, 226, 0.24), transparent 22%),
+    radial-gradient(circle at 78% 70%, rgba(92, 63, 150, 0.18), transparent 20%),
+    linear-gradient(135deg, rgba(24, 14, 42, 0.98), rgba(11, 10, 19, 0.97) 50%, rgba(23, 15, 38, 0.96));
   box-shadow: 0 32px 90px rgba(0, 0, 0, 0.34);
   overflow: hidden;
 }
@@ -156,8 +156,8 @@ img {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 10% 14%, rgba(255, 90, 232, 0.1), transparent 24%),
-    linear-gradient(90deg, rgba(7, 7, 12, 0.12) 0%, rgba(7, 7, 12, 0) 42%, rgba(7, 7, 12, 0.18) 100%);
+    radial-gradient(circle at 10% 14%, rgba(255, 90, 232, 0.08), transparent 24%),
+    linear-gradient(90deg, rgba(7, 7, 12, 0.14) 0%, rgba(7, 7, 12, 0) 42%, rgba(7, 7, 12, 0.16) 100%);
   pointer-events: none;
 }
 
@@ -166,9 +166,9 @@ img {
   inset: 16px;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.36;
+  opacity: 0.32;
   will-change: transform;
-  filter: blur(32px) saturate(1.08);
+  filter: blur(34px) saturate(1.02);
   mask-image: radial-gradient(circle at 74% 42%, black 18%, rgba(0, 0, 0, 0.78) 40%, transparent 78%);
   -webkit-mask-image: radial-gradient(circle at 74% 42%, black 18%, rgba(0, 0, 0, 0.78) 40%, transparent 78%);
 }
@@ -197,28 +197,28 @@ img {
   place-items: center;
   align-self: center;
   justify-self: end;
-  width: min(100%, 540px);
+  width: min(100%, 560px);
   padding: 0;
   border: 0;
   background: transparent;
   color: var(--text);
   text-align: center;
   cursor: pointer;
-  transform: translateY(-8px);
+  transform: none;
 }
 
 .hero-media__frame {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 1.18 / 1;
-  border-radius: 26px;
+  aspect-ratio: 16 / 9;
+  border-radius: 28px;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(58, 34, 104, 0.92), rgba(26, 23, 43, 0.88)),
+    linear-gradient(135deg, rgba(58, 34, 104, 0.9), rgba(26, 23, 43, 0.86)),
     rgba(22, 20, 33, 0.84);
   box-shadow:
-    0 34px 78px rgba(0, 0, 0, 0.34),
+    0 36px 84px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
     0 0 0 1px rgba(255, 255, 255, 0.08);
 }
@@ -237,19 +237,19 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% center;
-  transform: scale(1.01);
+  object-position: 58% center;
+  transform: scale(1.02);
 }
 
 .hero-media__mosaic {
   position: absolute;
-  inset: 0 42% 0 0;
+  inset: 0 46% 0 0;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
     linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
     linear-gradient(180deg, rgba(18, 12, 36, 0.56), rgba(18, 12, 36, 0.34));
   background-size: calc(100% / 3) calc(100% / 3), calc(100% / 3) calc(100% / 3), auto;
-  opacity: 0.44;
+  opacity: 0.4;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -257,24 +257,23 @@ img {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(35, 20, 62, 0.72) 0%, rgba(35, 20, 62, 0.26) 40%, rgba(16, 14, 26, 0) 68%),
-    linear-gradient(135deg, rgba(24, 18, 39, 0.42), rgba(15, 14, 23, 0.04) 38%, rgba(15, 14, 23, 0.16)),
-    radial-gradient(circle at 100% 0%, rgba(120, 84, 255, 0.2), transparent 30%),
-    radial-gradient(circle at 0% 100%, rgba(45, 225, 191, 0.14), transparent 28%);
+    linear-gradient(90deg, rgba(35, 20, 62, 0.76) 0%, rgba(35, 20, 62, 0.28) 40%, rgba(16, 14, 26, 0.02) 68%),
+    linear-gradient(135deg, rgba(24, 18, 39, 0.4), rgba(15, 14, 23, 0.04) 38%, rgba(15, 14, 23, 0.14)),
+    radial-gradient(circle at 100% 0%, rgba(120, 84, 255, 0.18), transparent 30%);
 }
 
 .hero-media__device {
   position: absolute;
-  inset: -1.5% -1.5%;
-  background: url("https://assets.liveengrave.com/website-assets/video-frame.png") center / 100% 100% no-repeat;
-  opacity: 0.96;
+  inset: 0;
+  background: url("https://assets.liveengrave.com/website-assets/video-frame.png") center / contain no-repeat;
+  opacity: 0.98;
   pointer-events: none;
 }
 
 .hero-media__bug {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 18px;
+  right: 18px;
   padding: 7px 10px 6px;
   border-radius: 999px;
   background: rgba(14, 12, 22, 0.5);
@@ -296,13 +295,13 @@ img {
 .hero-media__play-disc {
   display: grid;
   place-items: center;
-  width: 108px;
-  height: 108px;
+  width: 102px;
+  height: 102px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(244, 241, 247, 0.96));
+  background: linear-gradient(135deg, rgba(250, 245, 236, 0.98), rgba(233, 223, 206, 0.96));
   box-shadow:
-    0 28px 54px rgba(0, 0, 0, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    0 28px 54px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
 }
 
 .hero-media__play-icon {
@@ -311,7 +310,7 @@ img {
   margin-left: 5px;
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
-  border-left: 18px solid #50377d;
+  border-left: 18px solid #5c468f;
 }
 
 .eyebrow {
@@ -436,11 +435,11 @@ img {
 }
 
 .hero-lead {
-  max-width: 34ch;
-  margin: 22px 0 30px;
+  max-width: 35ch;
+  margin: 24px 0 32px;
   color: rgba(233, 229, 244, 0.78);
-  font-size: 1.02rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.72;
 }
 
 .hero-lead--stacked {
@@ -533,7 +532,7 @@ img {
   position: relative;
   grid-column: 1;
   z-index: 2;
-  max-width: 560px;
+  max-width: 548px;
   padding: 0;
   border-radius: 0;
   background: transparent;
@@ -1305,10 +1304,10 @@ img {
     min-height: auto;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    padding: 18px 12px 28px;
+    padding: 20px 12px 28px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
     border-radius: 24px;
     overflow: hidden;
   }
@@ -1349,18 +1348,18 @@ img {
     width: 100%;
     max-width: none;
     justify-self: stretch;
-    margin-top: 22px;
+    margin-top: 16px;
     transform: none;
   }
 
   .hero-media__frame {
-    aspect-ratio: 1.26 / 1;
+    aspect-ratio: 16 / 9;
     border-radius: 24px;
   }
 
   .hero-media__play-disc {
-    width: 80px;
-    height: 80px;
+    width: 78px;
+    height: 78px;
   }
 
   .hero-media__play-icon {
@@ -1382,7 +1381,7 @@ img {
     width: min(100%, calc(var(--content) - 24px));
     max-width: 100%;
     margin: 0 auto;
-    padding: 22px 20px 10px;
+    padding: 20px 20px 10px;
     border-radius: 24px;
     background: rgba(12, 11, 18, 0.42);
     backdrop-filter: blur(10px);
@@ -1391,13 +1390,13 @@ img {
 
   .hero h1 {
     max-width: 10ch;
-    font-size: clamp(2.7rem, 10vw, 4.1rem);
-    line-height: 0.94;
+    font-size: clamp(2.5rem, 10vw, 3.8rem);
+    line-height: 0.95;
   }
 
   .hero-lead {
     max-width: none;
-    margin: 18px 0 24px;
+    margin: 18px 0 22px;
     font-size: 16px;
     line-height: 1.65;
   }
@@ -1673,12 +1672,12 @@ img {
   }
 
   .hero h1 {
-    font-size: clamp(2.15rem, 11vw, 3.1rem);
+    font-size: clamp(2.1rem, 11vw, 3rem);
     max-width: 10.5ch;
   }
 
   .hero-lead {
-    max-width: 28ch;
+    max-width: 30ch;
     font-size: 15px;
   }
 
