@@ -662,6 +662,97 @@ img {
   padding: 30px;
 }
 
+.experience-watch-card {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  margin-top: 22px;
+  padding: 24px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(24, 22, 34, 0.84), rgba(18, 17, 27, 0.76));
+  box-shadow: var(--shadow-soft);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.experience-watch-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(215, 199, 255, 0.14), transparent 38%);
+  pointer-events: none;
+}
+
+.experience-watch-card:hover,
+.experience-watch-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(169, 139, 223, 0.22);
+  box-shadow: 0 26px 54px rgba(0, 0, 0, 0.24);
+}
+
+.experience-watch-card__eyebrow {
+  position: relative;
+  z-index: 1;
+  color: #a98bdf;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.experience-watch-card__title {
+  position: relative;
+  z-index: 1;
+  display: block;
+  max-width: 18ch;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.experience-watch-card__meta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.experience-watch-card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #9f84df, #6b4ca8 72%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 22px rgba(79, 59, 120, 0.28);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.experience-watch-card__icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid #fff;
+  transform: translate(-32%, -50%);
+}
+
 .story-kicker {
   margin: 0;
   color: #a98bdf;
@@ -1398,6 +1489,16 @@ img {
   .contact-section,
   .contact-form {
     padding: 20px;
+  }
+
+  .experience-watch-card {
+    margin-top: 18px;
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .experience-watch-card__title {
+    font-size: clamp(1.65rem, 7vw, 2.2rem);
   }
 
   .story-panel__body h3,

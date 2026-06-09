@@ -1,10 +1,10 @@
 (() => {
   const backdrop = document.querySelector('[data-hero-video]');
-  const openButton = document.querySelector('[data-open-video]');
+  const openButtons = document.querySelectorAll('[data-open-video]');
   const lightbox = document.querySelector('[data-video-lightbox]');
   const frame = document.querySelector('[data-video-frame]');
   const closeButtons = document.querySelectorAll('[data-close-video]');
-  if (!backdrop || !openButton || !lightbox || !frame) return;
+  if (!backdrop || !openButtons.length || !lightbox || !frame) return;
 
   const src = backdrop.getAttribute('data-video-src');
   if (!src) return;
@@ -47,7 +47,7 @@
     }
   };
 
-  openButton.addEventListener('click', openLightbox);
+  openButtons.forEach((button) => button.addEventListener('click', openLightbox));
   closeButtons.forEach((button) => button.addEventListener('click', closeLightbox));
 
   window.addEventListener('keydown', (event) => {
