@@ -643,16 +643,6 @@ img {
   pointer-events: none;
 }
 
-.experience-film::after {
-  content: "";
-  position: absolute;
-  top: 22px;
-  bottom: 22px;
-  right: 110px;
-  width: 1px;
-  background: linear-gradient(180deg, rgba(23, 20, 31, 0.06), rgba(23, 20, 31, 0.2), rgba(23, 20, 31, 0.06));
-}
-
 .experience-film:hover,
 .experience-film:focus-visible {
   border: 0;
