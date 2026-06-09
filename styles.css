@@ -249,15 +249,6 @@ img {
   letter-spacing: -0.03em;
 }
 
-.hero-video-trigger__label em {
-  display: block;
-  color: rgba(255, 255, 255, 0.68);
-  font-style: normal;
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
 
 
 .eyebrow {
@@ -1173,10 +1164,6 @@ img {
 
   .hero-video-trigger__label strong {
     font-size: 1.18rem;
-  }
-
-  .hero-video-trigger__label em {
-    font-size: 0.82rem;
   }
 
   .hero-video-trigger:hover,
