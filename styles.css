@@ -144,15 +144,10 @@ img {
 .hero::before {
   content: "";
   position: absolute;
-  inset: auto 0 0 0;
-  height: 42%;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 42px 42px;
-  transform: perspective(860px) rotateX(72deg) scale(1.16) translateY(52%);
-  transform-origin: center bottom;
-  opacity: 0.16;
+  inset: auto 0 -2% 0;
+  height: 54%;
+  background: url("./assets/hero-grid.svg") center bottom / cover no-repeat;
+  opacity: 0.3;
   pointer-events: none;
 }
 
@@ -160,7 +155,9 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(7, 7, 12, 0.12) 0%, rgba(7, 7, 12, 0) 42%, rgba(7, 7, 12, 0.18) 100%);
+  background:
+    radial-gradient(circle at 10% 14%, rgba(255, 90, 232, 0.1), transparent 24%),
+    linear-gradient(90deg, rgba(7, 7, 12, 0.12) 0%, rgba(7, 7, 12, 0) 42%, rgba(7, 7, 12, 0.18) 100%);
   pointer-events: none;
 }
 
@@ -206,6 +203,7 @@ img {
   color: var(--text);
   text-align: center;
   cursor: pointer;
+  transform: translateY(-8px);
 }
 
 .hero-media__frame {
@@ -224,6 +222,16 @@ img {
     0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
+.hero-media__frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 22%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 22%);
+  pointer-events: none;
+}
+
 .hero-media__frame img {
   width: 100%;
   height: 100%;
@@ -234,12 +242,14 @@ img {
 
 .hero-media__mosaic {
   position: absolute;
-  inset: 0;
+  inset: 0 42% 0 0;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: calc(100% / 4) calc(100% / 3);
-  opacity: 0.26;
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(18, 12, 36, 0.56), rgba(18, 12, 36, 0.34));
+  background-size: calc(100% / 3) calc(100% / 3), calc(100% / 3) calc(100% / 3), auto;
+  opacity: 0.44;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .hero-media__overlay {
@@ -252,6 +262,21 @@ img {
     radial-gradient(circle at 0% 100%, rgba(45, 225, 191, 0.14), transparent 28%);
 }
 
+.hero-media__bug {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 7px 10px 6px;
+  border-radius: 999px;
+  background: rgba(14, 12, 22, 0.5);
+  color: rgba(245, 243, 251, 0.72);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
 .hero-media__play {
   position: absolute;
   inset: 0;
@@ -262,12 +287,12 @@ img {
 .hero-media__play-disc {
   display: grid;
   place-items: center;
-  width: 96px;
-  height: 96px;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(244, 241, 247, 0.96));
   box-shadow:
-    0 24px 46px rgba(0, 0, 0, 0.24),
+    0 28px 54px rgba(0, 0, 0, 0.26),
     inset 0 1px 0 rgba(255, 255, 255, 0.92);
 }
 
@@ -1279,9 +1304,11 @@ img {
   }
 
   .hero::before {
-    height: 36%;
-    transform: perspective(640px) rotateX(73deg) scale(1.25) translateY(56%);
-    opacity: 0.12;
+    inset: auto 0 -1% 0;
+    height: 42%;
+    background-position: center bottom;
+    background-size: 160% auto;
+    opacity: 0.2;
   }
 
   .hero-backdrop {
@@ -1312,6 +1339,7 @@ img {
     max-width: none;
     justify-self: stretch;
     margin-top: 22px;
+    transform: none;
   }
 
   .hero-media__frame {
@@ -1329,6 +1357,13 @@ img {
     border-top-width: 10px;
     border-bottom-width: 10px;
     border-left-width: 16px;
+  }
+
+  .hero-media__bug {
+    top: 12px;
+    right: 12px;
+    padding: 6px 8px 5px;
+    font-size: 0.56rem;
   }
 
   .hero-copy {

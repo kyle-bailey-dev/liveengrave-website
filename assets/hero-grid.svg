@@ -1,0 +1,28 @@
+<svg width="1600" height="640" viewBox="0 0 1600 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gridFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g opacity="0.92">
+    <path d="M 0 640 L 800 350 L 1600 640" stroke="url(#gridFade)" stroke-width="1.4"/>
+    <path d="M 120 640 L 800 350 L 1480 640" stroke="url(#gridFade)" stroke-width="1.2"/>
+    <path d="M 240 640 L 800 350 L 1360 640" stroke="url(#gridFade)" stroke-width="1.1"/>
+    <path d="M 360 640 L 800 350 L 1240 640" stroke="url(#gridFade)" stroke-width="1"/>
+    <path d="M 480 640 L 800 350 L 1120 640" stroke="url(#gridFade)" stroke-width="1"/>
+    <path d="M 600 640 L 800 350 L 1000 640" stroke="url(#gridFade)" stroke-width="1"/>
+    <path d="M 720 640 L 800 350 L 880 640" stroke="url(#gridFade)" stroke-width="1"/>
+    <path d="M 0 640 H 1600" stroke="url(#gridFade)" stroke-width="1.6"/>
+    <path d="M 90 606 H 1510" stroke="url(#gridFade)" stroke-width="1.2"/>
+    <path d="M 175 574 H 1425" stroke="url(#gridFade)" stroke-width="1.1"/>
+    <path d="M 255 545 H 1345" stroke="url(#gridFade)" stroke-width="1"/>
+    <path d="M 332 519 H 1268" stroke="url(#gridFade)" stroke-width="0.95"/>
+    <path d="M 404 496 H 1196" stroke="url(#gridFade)" stroke-width="0.9"/>
+    <path d="M 472 475 H 1128" stroke="url(#gridFade)" stroke-width="0.85"/>
+    <path d="M 536 456 H 1064" stroke="url(#gridFade)" stroke-width="0.8"/>
+    <path d="M 596 439 H 1004" stroke="url(#gridFade)" stroke-width="0.75"/>
+    <path d="M 652 424 H 948" stroke="url(#gridFade)" stroke-width="0.7"/>
+    <path d="M 704 411 H 896" stroke="url(#gridFade)" stroke-width="0.65"/>
+  </g>
+</svg>
