@@ -836,8 +836,32 @@ img {
 
 .products-section__features {
   display: grid;
-  gap: 22px;
-  margin-top: 30px;
+  gap: 28px;
+  margin-top: 34px;
+}
+
+.products-section__features-introblock {
+  display: grid;
+  gap: 12px;
+  max-width: 68ch;
+}
+
+.products-section__features-kicker {
+  margin: 0;
+  color: #a98bdf;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.products-section__features-introblock h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
 }
 
 .products-section__features-intro {
@@ -850,23 +874,67 @@ img {
 
 .products-section__features-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 28px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .products-section__feature-item {
+  position: relative;
   display: grid;
-  gap: 8px;
-  padding: 22px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 12px;
+  align-content: start;
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(24, 22, 34, 0.82), rgba(18, 17, 27, 0.74));
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.products-section__feature-item::before {
+  content: "";
+  position: absolute;
+  inset: auto -18% -28% auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(104, 79, 158, 0.14), transparent 70%);
+}
+
+.products-section__feature-item--featured {
+  background: linear-gradient(180deg, rgba(72, 54, 113, 0.36), rgba(18, 17, 27, 0.78));
+  border-color: rgba(169, 139, 223, 0.2);
+}
+
+.products-section__feature-index {
+  position: relative;
+  z-index: 1;
+  color: #a98bdf;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .products-section__feature-item strong {
+  position: relative;
+  z-index: 1;
   display: block;
   color: var(--text);
-  font-size: 1.35rem;
-  line-height: 1.45;
+  font-size: 1.5rem;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.products-section__feature-item p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .contact-section {
