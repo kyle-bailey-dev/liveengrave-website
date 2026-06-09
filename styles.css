@@ -125,29 +125,62 @@ img {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
+  grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.84fr);
+  gap: 36px;
   align-items: center;
   min-height: 720px;
-  padding: 42px 0 64px;
-  border-radius: 28px;
+  padding: 48px 42px 72px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(206, 53, 255, 0.28), transparent 24%),
+    radial-gradient(circle at 92% 88%, rgba(58, 240, 199, 0.2), transparent 19%),
+    radial-gradient(circle at 78% 14%, rgba(121, 87, 255, 0.18), transparent 22%),
+    linear-gradient(135deg, rgba(18, 14, 28, 0.98), rgba(12, 11, 18, 0.92) 45%, rgba(14, 18, 32, 0.92));
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.34);
   overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42%;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  transform: perspective(860px) rotateX(72deg) scale(1.16) translateY(52%);
+  transform-origin: center bottom;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(9, 8, 13, 0.2) 0%, rgba(9, 8, 13, 0) 44%, rgba(9, 8, 13, 0.28) 100%);
+  pointer-events: none;
 }
 
 .hero-backdrop {
   position: absolute;
-  inset: 0;
-  right: -235px;
+  inset: 16px;
   z-index: 0;
-  pointer-events: auto;
-  opacity: 1;
+  pointer-events: none;
+  opacity: 0.36;
   will-change: transform;
-  mask-image: radial-gradient(circle at center, black 88%, transparent 93%);
-  -webkit-mask-image: radial-gradient(circle at center, black 88%, transparent 93%);
+  filter: blur(32px) saturate(1.08);
+  mask-image: radial-gradient(circle at 74% 42%, black 18%, rgba(0, 0, 0, 0.78) 40%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 74% 42%, black 18%, rgba(0, 0, 0, 0.78) 40%, transparent 78%);
 }
 
 .hero-backdrop::after {
-  content: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 46%, rgba(113, 86, 173, 0.14), rgba(12, 11, 18, 0.1) 38%, rgba(12, 11, 18, 0.55) 74%);
 }
 
 .hero-backdrop img,
@@ -157,6 +190,90 @@ img {
   object-fit: cover;
   object-position: center center;
   pointer-events: none;
+}
+
+.hero-media {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  justify-self: end;
+  width: min(100%, 520px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-media__frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.12 / 1;
+  border-radius: 30px;
+  overflow: hidden;
+  background: rgba(22, 20, 33, 0.84);
+  box-shadow:
+    0 34px 78px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.hero-media__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.02);
+}
+
+.hero-media__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(24, 18, 39, 0.58), rgba(15, 14, 23, 0.1) 38%, rgba(15, 14, 23, 0.46)),
+    radial-gradient(circle at 100% 0%, rgba(120, 84, 255, 0.24), transparent 30%),
+    radial-gradient(circle at 0% 100%, rgba(45, 225, 191, 0.2), transparent 28%);
+}
+
+.hero-media__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.hero-media__play-disc {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(247, 241, 232, 0.98), rgba(226, 215, 198, 0.96));
+  box-shadow:
+    0 24px 46px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.hero-media__play-icon {
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid #50377d;
+}
+
+.hero-media__caption {
+  margin-top: 18px;
+  padding: 0 18px;
+  color: rgba(245, 243, 251, 0.92);
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.45vw, 1.55rem);
+  letter-spacing: -0.04em;
 }
 
 
@@ -384,54 +501,15 @@ img {
   color: var(--text);
 }
 
-.button--video {
-  gap: 12px;
-  padding: 0 20px 0 14px;
-  border-color: rgba(23, 20, 31, 0.08);
-  background: linear-gradient(135deg, rgba(244, 238, 228, 0.98), rgba(231, 222, 208, 0.96));
-  color: #17141f;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-}
-
-.button--video:hover,
-.button--video:focus-visible {
-  background: linear-gradient(135deg, rgba(244, 238, 228, 0.98), rgba(231, 222, 208, 0.96));
-  color: #17141f;
-  border-color: rgba(23, 20, 31, 0.1);
-}
-
-.button--video__icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #9f84df, #6b4ca8 72%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 16px rgba(79, 59, 120, 0.22);
-  position: relative;
-  flex-shrink: 0;
-}
-
-.button--video__icon::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 8px solid #fff;
-  transform: translate(-28%, -50%);
-}
-
 .hero-copy {
   position: relative;
   z-index: 2;
-  max-width: 720px;
-  padding: 28px 30px;
-  border-radius: 28px;
-  background: rgba(12, 11, 18, 0.66);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+  max-width: 680px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
 
@@ -1254,9 +1332,15 @@ img {
     padding: 18px 12px 28px;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 18px;
     border-radius: 24px;
     overflow: hidden;
+  }
+
+  .hero::before {
+    height: 36%;
+    transform: perspective(640px) rotateX(73deg) scale(1.25) translateY(56%);
+    opacity: 0.12;
   }
 
   .hero-backdrop {
@@ -1264,19 +1348,51 @@ img {
     inset: auto;
     order: -1;
     width: 100%;
-    height: 260px;
-    margin-bottom: -62px;
+    height: 220px;
+    margin-bottom: -118px;
     border-radius: 24px;
     overflow: hidden;
-    mask-image: linear-gradient(180deg, black 0%, black 78%, transparent 100%);
-    -webkit-mask-image: linear-gradient(180deg, black 0%, black 78%, transparent 100%);
+    opacity: 0.42;
+    filter: blur(26px) saturate(1.05);
+    mask-image: linear-gradient(180deg, black 0%, black 74%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, black 0%, black 74%, transparent 100%);
   }
 
   .hero-backdrop::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(12, 11, 18, 0) 0%, rgba(12, 11, 18, 0) 68%, rgba(12, 11, 18, 0.58) 100%);
+    background: linear-gradient(180deg, rgba(12, 11, 18, 0) 0%, rgba(12, 11, 18, 0) 68%, rgba(12, 11, 18, 0.72) 100%);
+  }
+
+  .hero-media {
+    order: -1;
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+    margin-top: 22px;
+  }
+
+  .hero-media__frame {
+    aspect-ratio: 1.26 / 1;
+    border-radius: 24px;
+  }
+
+  .hero-media__play-disc {
+    width: 80px;
+    height: 80px;
+  }
+
+  .hero-media__play-icon {
+    margin-left: 4px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 16px;
+  }
+
+  .hero-media__caption {
+    margin-top: 14px;
+    font-size: 1.12rem;
   }
 
   .hero-copy {
@@ -1285,8 +1401,8 @@ img {
     margin: 0 auto;
     padding: 22px 20px 10px;
     border-radius: 24px;
-    background: rgba(12, 11, 18, 0.38);
-    backdrop-filter: blur(8px);
+    background: rgba(12, 11, 18, 0.42);
+    backdrop-filter: blur(10px);
     align-self: stretch;
   }
 
@@ -1311,10 +1427,6 @@ img {
 
   .hero-actions {
     margin: 24px 0 20px;
-  }
-
-  .button--video {
-    justify-content: center;
   }
 
   .hero-points--journey {
@@ -1585,6 +1697,10 @@ img {
   .hero-backdrop {
     mask-image: linear-gradient(180deg, black 0%, black 78%, transparent 100%);
     -webkit-mask-image: linear-gradient(180deg, black 0%, black 78%, transparent 100%);
+  }
+
+  .hero-media {
+    margin-top: 18px;
   }
 
   .hero h1 {
