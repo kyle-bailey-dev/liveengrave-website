@@ -679,15 +679,15 @@ img {
   max-width: none;
   margin: 22px auto 0;
   padding: 22px 24px 22px 24px;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 30px;
   background:
-    linear-gradient(135deg, rgba(244, 238, 228, 0.98), rgba(231, 222, 208, 0.96)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(240, 234, 224, 0.92));
-  color: #17141f;
+    radial-gradient(circle at 88% 50%, rgba(117, 86, 182, 0.16), transparent 26%),
+    linear-gradient(135deg, rgba(31, 24, 49, 0.9), rgba(18, 16, 29, 0.96));
+  color: var(--text);
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
   overflow: hidden;
 }
 
@@ -696,16 +696,16 @@ img {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.32), transparent 28%),
-    radial-gradient(circle at 86% 50%, rgba(125, 93, 188, 0.16), transparent 26%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
   pointer-events: none;
 }
 
 .experience-film:hover,
 .experience-film:focus-visible {
-  border: 0;
+  border-color: rgba(255, 255, 255, 0.08);
   transform: none;
-  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
 }
 
 .experience-film__title {
@@ -735,8 +735,8 @@ img {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #9f84df, #6b4ca8 72%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 18px 30px rgba(79, 59, 120, 0.28);
+  background: linear-gradient(135deg, rgba(250, 245, 236, 0.98), rgba(233, 223, 206, 0.96));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 18px 30px rgba(0, 0, 0, 0.18);
   position: relative;
 }
 
@@ -749,7 +749,7 @@ img {
   height: 0;
   border-top: 11px solid transparent;
   border-bottom: 11px solid transparent;
-  border-left: 16px solid #fff;
+  border-left: 16px solid #5c468f;
   transform: translate(-28%, -50%);
 }
 
