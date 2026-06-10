@@ -134,13 +134,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     email: String(req.body.email || '').trim(),
     phone: String(req.body.phone || '').trim(),
     requirements: String(req.body.requirements || '').trim(),
-    companyWebsite: String(req.body.companyWebsite || '').trim(),
     doNotRetain: String(req.body.doNotRetain || '').trim() === 'true',
   };
-
-  if (payload.companyWebsite) {
-    return res.json({ ok: true });
-  }
 
   if (!payload.firstName || !payload.lastName || !payload.email || !payload.requirements) {
     return res.status(400).json({ ok: false, error: 'Please complete the required fields.' });

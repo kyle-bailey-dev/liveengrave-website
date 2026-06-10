@@ -1976,15 +1976,6 @@ img {
 }
 
 
-.contact-form__honeypot {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-
 .contact-form__checkbox-row {
   display: grid;
   grid-template-columns: auto 1fr;
