@@ -6,6 +6,8 @@ const app = express();
 const port = Number(process.env.PORT || 3000);
 const rootDir = __dirname;
 
+app.set('trust proxy', 1);
+
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false }));
 
@@ -67,11 +69,31 @@ const getBrevoConfig = () => {
   };
 };
 
+const normalisePhoneForBrevo = (value) => {
+  const raw = String(value || '').trim();
+  if (!raw) return null;
+
+  let cleaned = raw.replace(/[^\d+]/g, '');
+
+  if (cleaned.startsWith('00')) {
+    cleaned = `+${cleaned.slice(2)}`;
+  } else if (cleaned.startsWith('44') && !cleaned.startsWith('+')) {
+    cleaned = `+${cleaned}`;
+  } else if (cleaned.startsWith('0')) {
+    cleaned = `+44${cleaned.slice(1)}`;
+  } else if (!cleaned.startsWith('+')) {
+    cleaned = `+${cleaned}`;
+  }
+
+  return /^\+\d{8,15}$/.test(cleaned) ? cleaned : null;
+};
+
 const syncBrevoContact = async (config, payload) => {
+  const sms = normalisePhoneForBrevo(payload.phone);
   const attributes = {
     FIRSTNAME: payload.firstName,
     LASTNAME: payload.lastName,
-    SMS: payload.phone || undefined,
+    SMS: sms || undefined,
     ENQUIRY_SOURCE: 'website',
   };
 
