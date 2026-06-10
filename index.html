@@ -68,6 +68,7 @@
           <a href="#product-story">The experience</a>
           <a href="#contact" data-analytics-event="cta_click" data-analytics-location="header_nav">Book a demo</a>
         </nav>
+        <button class="site-nav-backdrop" type="button" aria-hidden="true" tabindex="-1"></button>
       </header>
 
       <main>
@@ -400,21 +401,32 @@
       (() => {
         const toggle = document.querySelector('.site-nav-toggle');
         const nav = document.querySelector('.site-nav');
-        if (!toggle || !nav) return;
+        const backdrop = document.querySelector('.site-nav-backdrop');
+        if (!toggle || !nav || !backdrop) return;
 
         const closeNav = () => {
           toggle.setAttribute('aria-expanded', 'false');
           nav.classList.remove('is-open');
+          backdrop.classList.remove('is-open');
+          document.body.classList.remove('nav-open');
         };
 
         toggle.addEventListener('click', () => {
           const open = toggle.getAttribute('aria-expanded') === 'true';
           toggle.setAttribute('aria-expanded', String(!open));
           nav.classList.toggle('is-open', !open);
+          backdrop.classList.toggle('is-open', !open);
+          document.body.classList.toggle('nav-open', !open);
         });
 
         nav.querySelectorAll('a').forEach((link) => {
           link.addEventListener('click', closeNav);
+        });
+
+        backdrop.addEventListener('click', closeNav);
+
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') closeNav();
         });
 
         window.addEventListener('resize', () => {
