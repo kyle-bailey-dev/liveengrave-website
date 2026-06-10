@@ -72,6 +72,24 @@
 
       <main>
         <section class="hero" data-parallax-group>
+          <div class="hero-ambient" aria-hidden="true">
+            <svg class="hero-ambient__defs" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+              <defs>
+                <filter id="hero-goo">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+                  <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+              </defs>
+            </svg>
+            <div class="hero-ambient__blobs">
+              <div class="hero-ambient__blob hero-ambient__blob--1"></div>
+              <div class="hero-ambient__blob hero-ambient__blob--2"></div>
+              <div class="hero-ambient__blob hero-ambient__blob--3"></div>
+              <div class="hero-ambient__blob hero-ambient__blob--4"></div>
+              <div class="hero-ambient__blob hero-ambient__blob--interactive"></div>
+            </div>
+          </div>
           <div class="hero-backdrop" data-parallax="0.04" data-hero-video data-video-src="https://assets.liveengrave.com/website-assets/Live%20Engrave%20-%20horizontal.mp4">
             <img src="./photos/hero-new.webp" alt="Premium Live Engrave event hero visual" />
           </div>
@@ -425,6 +443,7 @@
     <script src="./vendor/embla-carousel.umd.js"></script>
     <script src="./steps-carousel.js"></script>
     <script src="./effects.js"></script>
+    <script src="./hero-ambient.js"></script>
     <script src="./hero-video.js"></script>
     <script src="./analytics.js"></script>
     <script src="./contact-form.js"></script>
