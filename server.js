@@ -12,6 +12,9 @@ app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false }));
 
 const gaMeasurementId = String(process.env.GA_MEASUREMENT_ID || '').trim();
+const turnstileSiteKey = String(process.env.TURNSTILE_SITE_KEY || '').trim();
+const turnstileSecretKey = String(process.env.TURNSTILE_SECRET_KEY || '').trim();
+const turnstileEnabled = Boolean(turnstileSiteKey && turnstileSecretKey);
 
 const analyticsHeadSnippet = gaMeasurementId ? `
     <!-- Google tag (gtag.js) -->
@@ -25,9 +28,20 @@ const analyticsHeadSnippet = gaMeasurementId ? `
     </script>
 ` : '';
 
+const turnstileHeadSnippet = turnstileEnabled ? `
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+` : '';
+
+const turnstileWidgetMarkup = turnstileEnabled ? `
+        <div class="cf-turnstile" data-sitekey="${turnstileSiteKey}" data-theme="dark" data-size="flexible"></div>
+` : '';
+
 const sendHtmlPage = (res, fileName, statusCode = 200) => {
   const filePath = path.join(rootDir, fileName);
   let html = require('fs').readFileSync(filePath, 'utf8');
+  html = html
+    .replace('__TURNSTILE_SCRIPT__', turnstileHeadSnippet)
+    .replace('__TURNSTILE_WIDGET__', turnstileWidgetMarkup);
   if (analyticsHeadSnippet && html.includes('</head>')) {
     html = html.replace('</head>', `${analyticsHeadSnippet}
   </head>`);
@@ -88,6 +102,38 @@ const normalisePhoneForBrevo = (value) => {
   return /^\+\d{8,15}$/.test(cleaned) ? cleaned : null;
 };
 
+const verifyTurnstileToken = async (token, remoteIp) => {
+  if (!turnstileEnabled) {
+    throw new Error('Turnstile is not configured.');
+  }
+
+  const body = new URLSearchParams({
+    secret: turnstileSecretKey,
+    response: token,
+  });
+
+  if (remoteIp) {
+    body.set('remoteip', remoteIp);
+  }
+
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+    },
+    body: body.toString(),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Turnstile verification failed: ${response.status}`);
+  }
+
+  const result = await response.json();
+  if (!result.success) {
+    throw new Error(`Turnstile rejected the submission: ${(result['error-codes'] || []).join(', ') || 'unknown_error'}`);
+  }
+};
+
 const syncBrevoContact = async (config, payload) => {
   const sms = normalisePhoneForBrevo(payload.phone);
   const attributes = {
@@ -135,6 +181,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     phone: String(req.body.phone || '').trim(),
     requirements: String(req.body.requirements || '').trim(),
     doNotRetain: String(req.body.doNotRetain || '').trim() === 'true',
+    turnstileToken: String(req.body['cf-turnstile-response'] || '').trim(),
   };
 
   if (!payload.firstName || !payload.lastName || !payload.email || !payload.requirements) {
@@ -145,7 +192,16 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     return res.status(400).json({ ok: false, error: 'Please enter a valid email address.' });
   }
 
+  if (!turnstileEnabled) {
+    return res.status(500).json({ ok: false, error: 'Form protection is not configured yet.' });
+  }
+
+  if (!payload.turnstileToken) {
+    return res.status(400).json({ ok: false, error: 'Please complete the form verification.' });
+  }
+
   try {
+    await verifyTurnstileToken(payload.turnstileToken, req.ip);
     const config = getBrevoConfig();
     const subject = `Live Engrave enquiry from ${payload.firstName} ${payload.lastName}`;
     const response = await fetch('https://api.brevo.com/v3/smtp/email', {

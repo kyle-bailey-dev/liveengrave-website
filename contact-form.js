@@ -4,6 +4,13 @@
 
   const button = form.querySelector('[data-contact-submit]');
   const status = form.querySelector('[data-contact-status]');
+  const resetTurnstile = () => {
+    if (!window.turnstile) return;
+    const widget = form.querySelector('.cf-turnstile');
+    if (widget) {
+      window.turnstile.reset(widget);
+    }
+  };
 
   const setStatus = (message, state) => {
     if (!status) return;
@@ -35,6 +42,7 @@
       }
 
       form.reset();
+      resetTurnstile();
       if (window.liveEngraveAnalytics?.track) {
         window.liveEngraveAnalytics.track('contact_form_submit', {
           form_name: 'book_a_demo',
@@ -42,6 +50,7 @@
       }
       setStatus('Thanks. We will get back to you shortly.', 'success');
     } catch (error) {
+      resetTurnstile();
       setStatus(error.message || 'Message failed to send. Please try again shortly.', 'error');
     } finally {
       button.disabled = false;

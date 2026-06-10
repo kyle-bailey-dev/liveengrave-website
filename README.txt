@@ -15,6 +15,8 @@ Optional:
 - CONTACT_TO_NAME
 - CONTACT_FROM_NAME
 - GA_MEASUREMENT_ID
+- TURNSTILE_SITE_KEY
+- TURNSTILE_SECRET_KEY
 
 The contact form sends the enquiry by Brevo transactional email.
 If the user does not tick the marketing opt-out box, the contact is also created or updated in Brevo contacts and optionally added to the configured list.

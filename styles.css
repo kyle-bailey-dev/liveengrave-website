@@ -1156,6 +1156,18 @@ img {
   grid-column: 1 / -1;
 }
 
+.contact-form__turnstile {
+  min-height: 74px;
+}
+
+.contact-form__turnstile:empty {
+  display: none;
+}
+
+.contact-form__turnstile .cf-turnstile {
+  width: 100%;
+}
+
 .contact-form__actions {
   display: flex;
   align-items: center;

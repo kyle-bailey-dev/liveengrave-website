@@ -28,6 +28,7 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#12111b" />
     <link rel="stylesheet" href="./styles.css" />
+    __TURNSTILE_SCRIPT__
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -322,6 +323,7 @@
         <span>What are you planning? <span class="contact-form__required" aria-hidden="true">*</span></span>
         <textarea name="requirements" rows="5" placeholder="Tell us about the event, audience, product type and timing." required aria-required="true"></textarea>
       </label>
+      <div class="contact-form__full contact-form__turnstile">__TURNSTILE_WIDGET__</div>
       <label class="contact-form__full contact-form__checkbox-row">
         <input type="checkbox" name="doNotRetain" value="true" />
         <span>Tick here if you do not want to receive marketing emails or offers from Live Engrave.</span>
