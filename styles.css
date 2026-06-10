@@ -1245,7 +1245,7 @@ img {
 }
 
 .contact-form__turnstile {
-  min-height: 74px;
+  min-height: 0;
 }
 
 .contact-form__turnstile:empty {
