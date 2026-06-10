@@ -1159,7 +1159,9 @@ img {
 .contact-form__choice-group {
   grid-column: 1 / -1;
   display: grid;
-  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px 18px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -1485,6 +1487,7 @@ img {
   }
 
   .contact-form__choice-group {
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
