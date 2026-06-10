@@ -64,9 +64,18 @@
           <span></span>
         </button>
         <nav class="site-nav" id="site-nav">
-          <a href="#how-it-works">How it works</a>
-          <a href="#product-story">The experience</a>
-          <a href="#contact" data-analytics-event="cta_click" data-analytics-location="header_nav">Book a demo</a>
+          <div class="site-nav__header">
+            <p class="site-nav__eyebrow">Navigate</p>
+            <p class="site-nav__summary">Live personalisation for premium event activations.</p>
+          </div>
+          <div class="site-nav__links">
+            <a href="#how-it-works">How it works</a>
+            <a href="#product-story">The experience</a>
+            <a href="#live-events">Built for live events</a>
+          </div>
+          <div class="site-nav__footer">
+            <a class="site-nav__cta" href="#contact" data-analytics-event="cta_click" data-analytics-location="header_nav">Book a demo</a>
+          </div>
         </nav>
         <button class="site-nav-backdrop" type="button" aria-hidden="true" tabindex="-1"></button>
       </header>
@@ -402,6 +411,8 @@
         const toggle = document.querySelector('.site-nav-toggle');
         const nav = document.querySelector('.site-nav');
         const backdrop = document.querySelector('.site-nav-backdrop');
+        const navLinks = Array.from(nav?.querySelectorAll('a[href^="#"]') ?? []);
+        let lastFocused = null;
         if (!toggle || !nav || !backdrop) return;
 
         const closeNav = () => {
@@ -409,14 +420,20 @@
           nav.classList.remove('is-open');
           backdrop.classList.remove('is-open');
           document.body.classList.remove('nav-open');
+          if (lastFocused instanceof HTMLElement) lastFocused.focus();
         };
 
         toggle.addEventListener('click', () => {
           const open = toggle.getAttribute('aria-expanded') === 'true';
+          lastFocused = document.activeElement;
           toggle.setAttribute('aria-expanded', String(!open));
           nav.classList.toggle('is-open', !open);
           backdrop.classList.toggle('is-open', !open);
           document.body.classList.toggle('nav-open', !open);
+          if (!open) {
+            const firstLink = nav.querySelector('.site-nav__links a');
+            if (firstLink instanceof HTMLElement) firstLink.focus();
+          }
         });
 
         nav.querySelectorAll('a').forEach((link) => {
@@ -432,6 +449,38 @@
         window.addEventListener('resize', () => {
           if (window.innerWidth > 820) closeNav();
         });
+
+        const sections = navLinks
+          .map((link) => {
+            const id = link.getAttribute('href');
+            return id ? document.querySelector(id) : null;
+          })
+          .filter(Boolean);
+
+        const setActiveLink = () => {
+          let activeId = '';
+          const offset = window.innerHeight * 0.24;
+
+          sections.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= offset && rect.bottom >= offset) {
+              activeId = `#${section.id}`;
+            }
+          });
+
+          navLinks.forEach((link) => {
+            const isActive = link.getAttribute('href') === activeId;
+            link.classList.toggle('is-active', isActive);
+            if (isActive) {
+              link.setAttribute('aria-current', 'page');
+            } else {
+              link.removeAttribute('aria-current');
+            }
+          });
+        };
+
+        setActiveLink();
+        window.addEventListener('scroll', setActiveLink, { passive: true });
       })();
     </script>
     <script>
