@@ -324,8 +324,10 @@
         <textarea name="requirements" rows="5" placeholder="Tell us about the event, audience, product type and timing." required aria-required="true"></textarea>
       </label>
       <fieldset class="contact-form__full contact-form__choice-group">
-        <legend>Are we okay to send you some follow up marketing emails? <span class="contact-form__required" aria-hidden="true">*</span></legend>
-        <div class="contact-form__choice-options">
+        <legend class="contact-form__choice-legend">Marketing consent</legend>
+        <div class="contact-form__choice-row">
+          <span class="contact-form__choice-label">Are we okay to send you some email relating to this request? <span class="contact-form__required" aria-hidden="true">*</span></span>
+          <div class="contact-form__choice-options">
           <label class="contact-form__choice">
             <input type="radio" name="marketingConsent" value="yes" required aria-required="true" checked />
             <span>Yes</span>
@@ -334,6 +336,7 @@
             <input type="radio" name="marketingConsent" value="no" required aria-required="true" />
             <span>No</span>
           </label>
+        </div>
         </div>
       </fieldset>
       <div class="contact-form__full contact-form__turnstile">__TURNSTILE_WIDGET__</div>
