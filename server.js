@@ -71,8 +71,7 @@ const syncBrevoContact = async (config, payload) => {
   const attributes = {
     FIRSTNAME: payload.firstName,
     LASTNAME: payload.lastName,
-    COMPANY: payload.companyName || undefined,
-    PHONE: payload.phone || undefined,
+    SMS: payload.phone || undefined,
     ENQUIRY_SOURCE: 'website',
   };
 
@@ -110,7 +109,6 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
   const payload = {
     firstName: String(req.body.firstName || '').trim(),
     lastName: String(req.body.lastName || '').trim(),
-    companyName: String(req.body.companyName || '').trim(),
     email: String(req.body.email || '').trim(),
     phone: String(req.body.phone || '').trim(),
     requirements: String(req.body.requirements || '').trim(),
@@ -159,7 +157,6 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         textContent: [
           `First name: ${payload.firstName}`,
           `Last name: ${payload.lastName}`,
-          `Company name: ${payload.companyName || '-'}`,
           `Email: ${payload.email}`,
           `Phone: ${payload.phone || '-'}`,
           '',
@@ -172,7 +169,6 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
           <h2>New Live Engrave enquiry</h2>
           <p><strong>First name:</strong> ${escapeHtml(payload.firstName)}</p>
           <p><strong>Last name:</strong> ${escapeHtml(payload.lastName)}</p>
-          <p><strong>Company name:</strong> ${escapeHtml(payload.companyName || '-')}</p>
           <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
           <p><strong>Phone:</strong> ${escapeHtml(payload.phone || '-')}</p>
           <p><strong>Requirements:</strong></p>
