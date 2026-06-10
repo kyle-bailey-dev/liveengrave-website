@@ -145,7 +145,7 @@ img {
 .hero-ambient {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   overflow: hidden;
   pointer-events: none;
 }
@@ -160,7 +160,7 @@ img {
   position: absolute;
   inset: -8%;
   filter: url("#hero-goo");
-  opacity: 0.72;
+  opacity: 0.84;
 }
 
 .hero-ambient__blob {
@@ -209,10 +209,11 @@ img {
 .hero-ambient__blob--interactive {
   top: 26%;
   left: 52%;
-  width: 18rem;
-  height: 18rem;
-  background: radial-gradient(circle, rgba(245, 204, 255, 0.14) 0%, rgba(163, 115, 255, 0.1) 52%, transparent 76%);
-  opacity: 0.88;
+  width: 24rem;
+  height: 24rem;
+  background: radial-gradient(circle, rgba(245, 204, 255, 0.24) 0%, rgba(163, 115, 255, 0.18) 46%, rgba(94, 70, 204, 0.08) 64%, transparent 78%);
+  opacity: 1;
+  filter: saturate(1.18);
 }
 
 @keyframes hero-blob-one {
