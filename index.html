@@ -324,10 +324,17 @@
         <textarea name="requirements" rows="5" placeholder="Tell us about the event, audience, product type and timing." required aria-required="true"></textarea>
       </label>
       <div class="contact-form__full contact-form__turnstile">__TURNSTILE_WIDGET__</div>
-      <label class="contact-form__full contact-form__checkbox-row">
-        <input type="checkbox" name="doNotRetain" value="true" />
-        <span>Tick here if you do not want to receive marketing emails or offers from Live Engrave.</span>
-      </label>
+      <fieldset class="contact-form__full contact-form__choice-group">
+        <legend>Are we okay to send you some follow up marketing emails? <span class="contact-form__required" aria-hidden="true">*</span></legend>
+        <label class="contact-form__choice">
+          <input type="radio" name="marketingConsent" value="yes" required aria-required="true" />
+          <span>Yes</span>
+        </label>
+        <label class="contact-form__choice">
+          <input type="radio" name="marketingConsent" value="no" required aria-required="true" />
+          <span>No</span>
+        </label>
+      </fieldset>
       <div class="contact-form__actions">
         <button class="button button--primary" type="submit" data-contact-submit>Send enquiry</button>
         <p class="contact-form__note" data-contact-status aria-live="polite">For early-stage planning, rough event details are enough.</p>

@@ -1156,6 +1156,38 @@ img {
   grid-column: 1 / -1;
 }
 
+.contact-form__choice-group {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.contact-form__choice-group legend {
+  padding: 0;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.contact-form__choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.contact-form__choice input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
 .contact-form__turnstile {
   min-height: 74px;
 }

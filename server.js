@@ -180,11 +180,11 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     email: String(req.body.email || '').trim(),
     phone: String(req.body.phone || '').trim(),
     requirements: String(req.body.requirements || '').trim(),
-    doNotRetain: String(req.body.doNotRetain || '').trim() === 'true',
+    marketingConsent: String(req.body.marketingConsent || '').trim().toLowerCase(),
     turnstileToken: String(req.body['cf-turnstile-response'] || '').trim(),
   };
 
-  if (!payload.firstName || !payload.lastName || !payload.email || !payload.requirements) {
+  if (!payload.firstName || !payload.lastName || !payload.email || !payload.requirements || !['yes', 'no'].includes(payload.marketingConsent)) {
     return res.status(400).json({ ok: false, error: 'Please complete the required fields.' });
   }
 
@@ -202,6 +202,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
   try {
     await verifyTurnstileToken(payload.turnstileToken, req.ip);
+    const allowMarketing = payload.marketingConsent === 'yes';
     const config = getBrevoConfig();
     const subject = `Live Engrave enquiry from ${payload.firstName} ${payload.lastName}`;
     const response = await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -236,7 +237,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
           'Requirements:',
           payload.requirements,
           '',
-          `Marketing and offers opt-out: ${payload.doNotRetain ? 'Yes' : 'No'}`,
+          `Marketing follow-up okay: ${allowMarketing ? 'Yes' : 'No'}`,
         ].join('\n'),
         htmlContent: `
           <h2>New Live Engrave enquiry</h2>
@@ -247,7 +248,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
           <p><strong>Requirements:</strong></p>
           <p>${escapeHtml(payload.requirements).replace(/\n/g, '<br />')}</p>
           <hr style="margin: 24px 0; border: 0; border-top: 1px solid #d9d4ea;" />
-          <p style="font-size: 14px; color: #5d5672;"><strong>Marketing and offers opt-out:</strong> ${payload.doNotRetain ? 'Yes' : 'No'}</p>
+          <p style="font-size: 14px; color: #5d5672;"><strong>Marketing follow-up okay:</strong> ${allowMarketing ? 'Yes' : 'No'}</p>
         `,
       }),
     });
@@ -257,7 +258,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       throw new Error(`Brevo request failed: ${response.status} ${body}`);
     }
 
-    if (!payload.doNotRetain) {
+    if (allowMarketing) {
       await syncBrevoContact(config, payload);
     }
 
