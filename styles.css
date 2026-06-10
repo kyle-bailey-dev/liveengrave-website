@@ -714,12 +714,13 @@ img {
   z-index: 1;
   display: block;
   max-width: 18ch;
-  justify-self: start;
+  justify-self: center;
   font-family: var(--font-serif);
   font-size: clamp(1.45rem, 1.9vw, 1.95rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.05em;
+  text-align: center;
   text-wrap: balance;
 }
 
