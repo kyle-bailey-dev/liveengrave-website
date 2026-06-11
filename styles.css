@@ -393,7 +393,7 @@ img {
 .hero-media__device {
   position: absolute;
   inset: 0;
-  background: url("https://assets.liveengrave.com/website-assets/video-frame.png") center / contain no-repeat;
+  background: url("./assets/video-frame.webp") center / contain no-repeat;
   opacity: 0.98;
   pointer-events: none;
 }
